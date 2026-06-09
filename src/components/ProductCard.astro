@@ -6,7 +6,7 @@ interface Props {
 	title: string;
 	description: string;
 	price?: string;
-	image: string | ImageMetadata;
+	image?: string | ImageMetadata;
 	badge?: string;
 	badgeBg?: string;
 	delayClass?: string;
@@ -33,12 +33,12 @@ const {
 {!mobileOnly && (
   <div class={`hidden md:block group reveal-element cursor-pointer ${delayClass}`}>
     <div class="aspect-[1/1] rounded-2xl overflow-hidden mb-6 bg-surface-container-high border border-outline-variant/20 group-hover:shadow-lg transition-all duration-300">
-      {isPlaceholder ? (
+      {isPlaceholder || !image ? (
         <div class="w-full h-full flex items-center justify-center bg-surface-container">
           <span class="material-symbols-outlined text-outline-variant text-5xl" aria-hidden="true">spa</span>
         </div>
       ) : (
-        <Image alt={title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={image as any} />
+        <Image alt={title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={image} />
       )}
     </div>
     <div class="flex justify-between items-start group-hover:-translate-y-1 transition-transform duration-300">
@@ -55,10 +55,10 @@ const {
 {!desktopOnly && (
   <div class={`md:hidden fade-in-up glass-card rounded-2xl p-4 flex gap-4 items-center group cursor-pointer hover:bg-surface-container transition-colors ${delayClass}`}>
     <div class="w-24 h-24 rounded-xl overflow-hidden shrink-0 bg-surface-container flex items-center justify-center">
-      {isPlaceholder ? (
+      {isPlaceholder || !image ? (
         <span class="material-symbols-outlined text-outline-variant text-4xl" aria-hidden="true">spa</span>
       ) : (
-        <Image alt={title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={image as any} />
+        <Image alt={title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={image} />
       )}
     </div>
     <div class="flex-1">
