@@ -80,27 +80,37 @@ import Layout from "../layouts/Layout.astro";
         </div>
         <a class="nav-link-underline font-label-md text-label-md text-primary pb-1 transition-all hidden md:inline-block" href="#">Ver coleção completa</a>
       </div>
-
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
-        <!-- Sabonetes: Desktop (Grid) + Mobile (Row) -->
+        <!-- Sabonetes (Desktop Only) -->
         <ProductCard 
           title="Sabonetes Energéticos"
           description="Limpeza física e vibracional."
+          price=""
+          image="/assets/images/sabonetes.jpg"
+          desktopOnly={true}
+        />
+
+        <!-- Sabonetes (Mobile Only) -->
+        <ProductCard 
+          title="Sabonetes Energéticos"
+          description="Feitos à mão com óleos essenciais para limpeza áurica."
           price="CHF 25"
           image="/assets/images/sabonetes.jpg"
           badge="Limpeza"
           badgeBg="bg-tertiary-fixed/40"
+          mobileOnly={true}
         />
         
-        <!-- Banhos de Ervas: Desktop Only -->
+        <!-- Banhos de Ervas (Desktop Only) -->
         <ProductCard 
           title="Banhos de Ervas"
           description="Misturas ancestrais para infusão."
           image="/assets/images/banhos.jpg"
           delayClass="md:translate-y-12"
+          desktopOnly={true}
         />
 
-        <!-- Óleos Essenciais: Mobile Only (uses placeholder icon per Mobile screen) -->
+        <!-- Óleos Essenciais (Mobile Only) -->
         <ProductCard 
           title="Óleos Essenciais"
           description="Blends exclusivos para meditação e foco."
@@ -110,22 +120,25 @@ import Layout from "../layouts/Layout.astro";
           badgeBg="bg-secondary-fixed/40"
           isPlaceholder={true}
           delayClass="delay-100"
+          mobileOnly={true}
         />
 
-        <!-- Kits de Ritual: Desktop Only -->
+        <!-- Kits de Ritual (Desktop Only) -->
         <ProductCard 
           title="Kits de Ritual"
           description="Experiências completas de cura."
           image="/assets/images/kits.jpg"
           delayClass="delay-200"
+          desktopOnly={true}
         />
 
-        <!-- E-books & Guias: Desktop Only -->
+        <!-- E-books & Guias (Desktop Only) -->
         <ProductCard 
           title="E-books & Guias"
           description="Conhecimento para sua jornada."
           image="/assets/images/ebooks.jpg"
           delayClass="delay-300 md:translate-y-12"
+          desktopOnly={true}
         />
       </div>
 
