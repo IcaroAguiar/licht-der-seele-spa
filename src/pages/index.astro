@@ -1,4 +1,12 @@
 ---
+import { Image } from "astro:assets";
+import banhosImage from "../assets/images/banhos.jpg";
+import ebooksImage from "../assets/images/ebooks.jpg";
+import founderImage from "../assets/images/founder.jpg";
+// Import local images
+import heroImage from "../assets/images/hero.jpg";
+import kitsImage from "../assets/images/kits.jpg";
+import sabonetesImage from "../assets/images/sabonetes.jpg";
 import BottomNav from "../components/BottomNav.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
@@ -35,7 +43,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
         <div class="order-1 md:order-2 relative">
           <div class="float-anim aspect-[4/5] rounded-[40px] overflow-hidden bg-surface-container-low border border-outline-variant/30 reveal-element delay-200">
-            <img alt="Spa Ritual" class="w-full h-full object-cover grayscale-[0.2] hover:scale-105 transition-transform duration-700" src="/assets/images/hero.jpg" />
+            <Image alt="Spa Ritual" class="w-full h-full object-cover grayscale-[0.2] hover:scale-105 transition-transform duration-700" src={heroImage} loading="eager" fetchpriority="high" />
           </div>
           <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-secondary-container/20 rounded-full blur-3xl -z-10"></div>
         </div>
@@ -46,7 +54,7 @@ import Layout from "../layouts/Layout.astro";
     <section class="md:hidden min-h-[85vh] flex flex-col items-center justify-center px-margin-mobile pt-12 pb-8 text-center relative overflow-hidden">
       <div class="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(circle_at_center,var(--color-secondary-container)_0%,transparent_70%)]"></div>
       <div class="relative z-10 w-full max-w-sm mx-auto mb-8 float-animation">
-        <img alt="A serene spa environment with soft, warm lighting." class="w-full h-auto rounded-[40px] shadow-2xl object-cover aspect-[4/5]" src="/assets/images/hero.jpg" />
+        <Image alt="A serene spa environment with soft, warm lighting." class="w-full h-auto rounded-[40px] shadow-2xl object-cover aspect-[4/5]" src={heroImage} loading="eager" fetchpriority="high" />
       </div>
       <div class="z-10 flex flex-col items-center gap-4">
         <span class="fade-in-up inline-block px-4 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-md text-label-md tracking-widest uppercase text-xs">Zurique, CH</span>
@@ -54,7 +62,7 @@ import Layout from "../layouts/Layout.astro";
         <p class="fade-in-up font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto mt-2" style="transition-delay: 0.2s;">Holismo luminoso para o seu bem-estar profundo.</p>
         <a href="#agendamento" class="fade-in-up mt-6 bg-primary text-surface font-label-md text-label-md px-8 py-4 rounded-full hover:bg-on-primary-fixed-variant transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(40,17,35,0.15)] flex items-center gap-2" style="transition-delay: 0.3s;">
           <span>Agendar Ritual</span>
-          <span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_right_alt</span>
         </a>
       </div>
     </section>
@@ -86,7 +94,7 @@ import Layout from "../layouts/Layout.astro";
           title="Sabonetes Energéticos"
           description="Limpeza física e vibracional."
           price=""
-          image="/assets/images/sabonetes.jpg"
+          image={sabonetesImage}
           desktopOnly={true}
         />
 
@@ -95,7 +103,7 @@ import Layout from "../layouts/Layout.astro";
           title="Sabonetes Energéticos"
           description="Feitos à mão com óleos essenciais para limpeza áurica."
           price="CHF 25"
-          image="/assets/images/sabonetes.jpg"
+          image={sabonetesImage}
           badge="Limpeza"
           badgeBg="bg-tertiary-fixed/40"
           mobileOnly={true}
@@ -105,7 +113,7 @@ import Layout from "../layouts/Layout.astro";
         <ProductCard 
           title="Banhos de Ervas"
           description="Misturas ancestrais para infusão."
-          image="/assets/images/banhos.jpg"
+          image={banhosImage}
           delayClass="md:translate-y-12"
           desktopOnly={true}
         />
@@ -127,7 +135,7 @@ import Layout from "../layouts/Layout.astro";
         <ProductCard 
           title="Kits de Ritual"
           description="Experiências completas de cura."
-          image="/assets/images/kits.jpg"
+          image={kitsImage}
           delayClass="delay-200"
           desktopOnly={true}
         />
@@ -136,7 +144,7 @@ import Layout from "../layouts/Layout.astro";
         <ProductCard 
           title="E-books & Guias"
           description="Conhecimento para sua jornada."
-          image="/assets/images/ebooks.jpg"
+          image={ebooksImage}
           delayClass="delay-300 md:translate-y-12"
           desktopOnly={true}
         />
@@ -172,6 +180,7 @@ import Layout from "../layouts/Layout.astro";
               description="Harmonização dos chakras e redução profunda do estresse através da imposição de mãos."
               badge="Energia"
               delayClass="delay-100"
+              desktopOnly={true}
             />
             <ServiceItem 
               num="02"
@@ -179,6 +188,7 @@ import Layout from "../layouts/Layout.astro";
               description="Uso terapêutico de óleos essenciais para tratar questões emocionais e físicas."
               badge="Botânica"
               delayClass="delay-200"
+              desktopOnly={true}
             />
             <ServiceItem 
               num="03"
@@ -186,6 +196,7 @@ import Layout from "../layouts/Layout.astro";
               description="Um mapa para entender sua missão de alma e os desafios de crescimento pessoal."
               badge="Sabedoria"
               delayClass="delay-300"
+              desktopOnly={true}
             />
           </div>
 
@@ -199,6 +210,7 @@ import Layout from "../layouts/Layout.astro";
               price="CHF 120"
               bgGradClass="bg-primary-fixed/20"
               delayClass="delay-100"
+              mobileOnly={true}
             />
             <ServiceItem 
               num="02"
@@ -208,6 +220,7 @@ import Layout from "../layouts/Layout.astro";
               price="CHF 95"
               bgGradClass="bg-secondary-fixed/20"
               delayClass="delay-200"
+              mobileOnly={true}
             />
           </div>
         </div>
@@ -220,7 +233,7 @@ import Layout from "../layouts/Layout.astro";
       <div class="max-w-container-max mx-auto grid md:grid-cols-2 gap-20 items-center">
         <div class="relative reveal-element">
           <div class="aspect-[3/4] rounded-[60px] overflow-hidden border border-outline-variant/20 shadow-2xl">
-            <img alt="Daiane - Licht der Seele" class="w-full h-full object-cover grayscale-[0.3]" src="/assets/images/founder.jpg" />
+            <Image alt="Daiane - Licht der Seele" class="w-full h-full object-cover grayscale-[0.3]" src={founderImage} />
           </div>
           <div class="absolute -top-6 -right-6 p-8 bg-surface rounded-3xl border border-outline-variant/20 max-w-[200px]">
             <p class="font-label-md text-xs text-primary leading-relaxed">Fundado em Zurique por Daiane, uma jornada de volta à essência.</p>
@@ -237,7 +250,7 @@ import Layout from "../layouts/Layout.astro";
           </p>
           <a class="inline-flex items-center gap-4 font-label-md text-primary group nav-link-underline pb-1" href="#">
             Conheça minha história 
-            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform" aria-hidden="true">arrow_forward</span>
           </a>
         </div>
       </div>
@@ -254,21 +267,21 @@ import Layout from "../layouts/Layout.astro";
         <div class="grid md:grid-cols-3 gap-12 text-center">
           <div class="p-8 reveal-element delay-100">
             <div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-8 text-primary transition-transform duration-300 hover:scale-110 cursor-default">
-              <span class="material-symbols-outlined text-3xl">calendar_today</span>
+              <span class="material-symbols-outlined text-3xl" aria-hidden="true">calendar_today</span>
             </div>
             <h3 class="font-headline-sm text-headline-sm text-primary mb-4">Agende seu tempo</h3>
             <p class="text-on-surface-variant text-sm">Escolha a terapia que mais ressoa com seu momento atual através do nosso sistema online.</p>
           </div>
           <div class="p-8 md:border-x border-outline-variant/10 reveal-element delay-200">
             <div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-8 text-primary transition-transform duration-300 hover:scale-110 cursor-default">
-              <span class="material-symbols-outlined text-3xl">self_care</span>
+              <span class="material-symbols-outlined text-3xl" aria-hidden="true">self_care</span>
             </div>
             <h3 class="font-headline-sm text-headline-sm text-primary mb-4">Receba o Cuidado</h3>
             <p class="text-on-surface-variant text-sm">Uma sessão personalizada, seja presencial ou online, focada inteiramente na sua energia.</p>
           </div>
           <div class="p-8 reveal-element delay-300">
             <div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-8 text-primary transition-transform duration-300 hover:scale-110 cursor-default">
-              <span class="material-symbols-outlined text-3xl">auto_fix_high</span>
+              <span class="material-symbols-outlined text-3xl" aria-hidden="true">auto_fix_high</span>
             </div>
             <h3 class="font-headline-sm text-headline-sm text-primary mb-4">Ritualize em casa</h3>
             <p class="text-on-surface-variant text-sm">Mantenha a vibração com nossos produtos exclusivos e orientações pós-sessão.</p>
@@ -300,30 +313,32 @@ import Layout from "../layouts/Layout.astro";
 
 
     <!-- FINAL CTA SECTION -->
-    <!-- Desktop CTA -->
-    <section id="agendamento" class="hidden md:block py-section-gap-lg px-gutter text-center relative overflow-hidden reveal-element">
-      <div class="absolute inset-0 bg-primary/5 -z-10"></div>
-      <div class="max-w-2xl mx-auto">
-        <h2 class="font-display-lg text-display-lg text-primary mb-10">Inicie sua jornada de clareza</h2>
-        <p class="text-on-surface-variant mb-12 text-lg">Estamos prontos para acolher você e sua energia. Reserve seu espaço de cura hoje mesmo.</p>
-        <a href="mailto:fragrancetofaith@gmail.com?subject=Agendamento%20Licht%20der%20Seele" class="inline-block bg-primary text-on-primary px-12 py-6 rounded-full font-label-md text-label-md hover:bg-primary/90 active:scale-95 transition-all duration-200 shadow-xl">
-          Agendar Agora
-        </a>
-      </div>
-    </section>
+    <div id="agendamento">
+      <!-- Desktop CTA -->
+      <section class="hidden md:block py-section-gap-lg px-gutter text-center relative overflow-hidden reveal-element">
+        <div class="absolute inset-0 bg-primary/5 -z-10"></div>
+        <div class="max-w-2xl mx-auto">
+          <h2 class="font-display-lg text-display-lg text-primary mb-10">Inicie sua jornada de clareza</h2>
+          <p class="text-on-surface-variant mb-12 text-lg">Estamos prontos para acolher você e sua energia. Reserve seu espaço de cura hoje mesmo.</p>
+          <a href="mailto:fragrancetofaith@gmail.com?subject=Agendamento%20Licht%20der%20Seele" class="inline-block bg-primary text-on-primary px-12 py-6 rounded-full font-label-md text-label-md hover:bg-primary/90 active:scale-95 transition-all duration-200 shadow-xl">
+            Agendar Agora
+          </a>
+        </div>
+      </section>
 
-    <!-- Mobile CTA -->
-    <section id="agendamento-mobile" class="md:hidden py-section-gap-md px-margin-mobile bg-primary text-surface text-center rounded-t-[40px] mt-8 relative overflow-hidden">
-      <div class="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_top,var(--color-primary-fixed)_0%,transparent_60%)]"></div>
-      <div class="relative z-10 max-w-md mx-auto">
-        <span class="material-symbols-outlined text-4xl mb-4 text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">self_care</span>
-        <h2 class="font-headline-md text-headline-md mb-4 text-surface">Inicie sua jornada de clareza</h2>
-        <p class="font-body-md text-body-md text-surface-variant/80 mb-8">Permita-se um momento de pausa autêntica no coração de Zurique.</p>
-        <a href="mailto:fragrancetofaith@gmail.com?subject=Agendamento%20Licht%20der%20Seele" class="inline-block bg-surface text-primary font-label-md text-label-md px-8 py-4 rounded-full hover:bg-surface-variant transition-all duration-300 w-full sm:w-auto shadow-lg text-center">
-          Agendar Agora
-        </a>
-      </div>
-    </section>
+      <!-- Mobile CTA -->
+      <section class="md:hidden py-section-gap-md px-margin-mobile bg-primary text-surface text-center rounded-t-[40px] mt-8 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_top,var(--color-primary-fixed)_0%,transparent_60%)]"></div>
+        <div class="relative z-10 max-w-md mx-auto">
+          <span class="material-symbols-outlined text-4xl mb-4 text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">self_care</span>
+          <h2 class="font-headline-md text-headline-md mb-4 text-surface">Inicie sua jornada de clareza</h2>
+          <p class="font-body-md text-body-md text-surface-variant/80 mb-8">Permita-se um momento de pausa autêntica no coração de Zurique.</p>
+          <a href="mailto:fragrancetofaith@gmail.com?subject=Agendamento%20Licht%20der%20Seele" class="inline-block bg-surface text-primary font-label-md text-label-md px-8 py-4 rounded-full hover:bg-surface-variant transition-all duration-300 w-full sm:w-auto shadow-lg text-center">
+            Agendar Agora
+          </a>
+        </div>
+      </section>
+    </div>
   </main>
 
   <!-- Desktop Footer -->

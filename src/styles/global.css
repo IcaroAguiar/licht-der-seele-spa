@@ -198,3 +198,7 @@ body {
 	backdrop-filter: blur(10px);
 	border: 1px solid rgba(208, 195, 201, 0.3);
 }
+
+.pb-safe {
+	padding-bottom: env(safe-area-inset-bottom);
+}
