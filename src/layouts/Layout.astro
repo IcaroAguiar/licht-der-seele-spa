@@ -1,0 +1,77 @@
+---
+import "../styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Licht der Seele | Rituais e Bem-Estar Holístico",
+	description = "Apoio holístico e ferramentas tangíveis para integrar o autocuidado à sua rotina diária no coração de Zurique e online.",
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+	</head>
+	<body class="font-body-md text-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container antialiased">
+		
+		<slot />
+
+		<script>
+			// Header Scroll Effect
+			window.addEventListener('scroll', () => {
+				const header = document.querySelector('header');
+				if (header) {
+					if (window.scrollY > 20) {
+						header.classList.add('shadow-sm');
+						header.classList.remove('bg-surface/90');
+						header.classList.add('bg-white');
+					} else {
+						header.classList.remove('shadow-sm');
+						header.classList.remove('bg-white');
+						header.classList.add('bg-surface/90');
+					}
+				}
+			});
+
+			// Intersection Observer for Reveal Animations
+			document.addEventListener("DOMContentLoaded", () => {
+				const observerOptions = {
+					root: null,
+					rootMargin: '0px',
+					threshold: 0.12
+				};
+
+				const observer = new IntersectionObserver((entries) => {
+					for (const entry of entries) {
+						if (entry.isIntersecting) {
+							// For desktop animations
+							if (entry.target.classList.contains('reveal-element')) {
+								entry.target.classList.add('is-visible');
+							}
+							// For mobile animations
+							if (entry.target.classList.contains('fade-in-up')) {
+								entry.target.classList.add('visible');
+							}
+							observer.unobserve(entry.target); // Only animate once
+						}
+					}
+				}, observerOptions);
+
+				// Observe elements
+				document.querySelectorAll('.reveal-element, .fade-in-up').forEach((el) => {
+					observer.observe(el);
+				});
+			});
+		</script>
+	</body>
+</html>
