@@ -8,6 +8,8 @@ interface Props {
 	badgeBg?: string;
 	delayClass?: string;
 	isPlaceholder?: boolean;
+	desktopOnly?: boolean;
+	mobileOnly?: boolean;
 }
 
 const {
@@ -19,48 +21,54 @@ const {
 	badgeBg = "bg-tertiary-fixed/40",
 	delayClass = "",
 	isPlaceholder = false,
+	desktopOnly = false,
+	mobileOnly = false,
 } = Astro.props;
 ---
 
 <!-- Desktop Layout -->
-<div class={`hidden md:block group reveal-element cursor-pointer ${delayClass}`}>
-  <div class="aspect-[1/1] rounded-2xl overflow-hidden mb-6 bg-surface-container-high border border-outline-variant/20 group-hover:shadow-lg transition-all duration-300">
-    {isPlaceholder ? (
-      <div class="w-full h-full flex items-center justify-center bg-surface-container">
-        <span class="material-symbols-outlined text-outline-variant text-5xl">spa</span>
-      </div>
-    ) : (
-      <img alt={title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={image} />
-    )}
-  </div>
-  <div class="flex justify-between items-start group-hover:-translate-y-1 transition-transform duration-300">
-    <div>
-      <h3 class="font-headline-sm text-headline-sm text-primary mb-1">{title}</h3>
-      <p class="text-on-surface-variant font-body-md text-sm">{description}</p>
+{!mobileOnly && (
+  <div class={`hidden md:block group reveal-element cursor-pointer ${delayClass}`}>
+    <div class="aspect-[1/1] rounded-2xl overflow-hidden mb-6 bg-surface-container-high border border-outline-variant/20 group-hover:shadow-lg transition-all duration-300">
+      {isPlaceholder ? (
+        <div class="w-full h-full flex items-center justify-center bg-surface-container">
+          <span class="material-symbols-outlined text-outline-variant text-5xl">spa</span>
+        </div>
+      ) : (
+        <img alt={title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={image} />
+      )}
     </div>
-    {price && <span class="font-body-md text-secondary ml-2 font-medium">{price}</span>}
+    <div class="flex justify-between items-start group-hover:-translate-y-1 transition-transform duration-300">
+      <div>
+        <h3 class="font-headline-sm text-headline-sm text-primary mb-1">{title}</h3>
+        <p class="text-on-surface-variant font-body-md text-sm">{description}</p>
+      </div>
+      {price && <span class="font-body-md text-secondary ml-2 font-medium">{price}</span>}
+    </div>
   </div>
-</div>
+)}
 
 <!-- Mobile Layout -->
-<div class={`md:hidden fade-in-up glass-card rounded-2xl p-4 flex gap-4 items-center group cursor-pointer hover:bg-surface-container transition-colors ${delayClass}`}>
-  <div class="w-24 h-24 rounded-xl overflow-hidden shrink-0 bg-surface-container flex items-center justify-center">
-    {isPlaceholder ? (
-      <span class="material-symbols-outlined text-outline-variant text-4xl">spa</span>
-    ) : (
-      <img alt={title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={image} />
-    )}
-  </div>
-  <div class="flex-1">
-    <div class="flex justify-between items-start mb-1">
-      <h4 class="font-label-md text-label-md text-primary text-base">{title}</h4>
-      <span class="font-body-md text-body-md text-secondary">{price}</span>
+{!desktopOnly && (
+  <div class={`md:hidden fade-in-up glass-card rounded-2xl p-4 flex gap-4 items-center group cursor-pointer hover:bg-surface-container transition-colors ${delayClass}`}>
+    <div class="w-24 h-24 rounded-xl overflow-hidden shrink-0 bg-surface-container flex items-center justify-center">
+      {isPlaceholder ? (
+        <span class="material-symbols-outlined text-outline-variant text-4xl">spa</span>
+      ) : (
+        <img alt={title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={image} />
+      )}
     </div>
-    <p class="font-body-md text-body-md text-sm text-on-surface-variant mb-2 line-clamp-2">{description}</p>
-    {badge && (
-      <span class={`inline-block px-2 py-0.5 rounded-full ${badgeBg} text-on-secondary-container font-label-md text-[10px]`}>
-        {badge}
-      </span>
-    )}
+    <div class="flex-1">
+      <div class="flex justify-between items-start mb-1">
+        <h4 class="font-label-md text-label-md text-primary text-base">{title}</h4>
+        <span class="font-body-md text-body-md text-secondary">{price}</span>
+      </div>
+      <p class="font-body-md text-body-md text-sm text-on-surface-variant mb-2 line-clamp-2">{description}</p>
+      {badge && (
+        <span class={`inline-block px-2 py-0.5 rounded-full ${badgeBg} text-on-secondary-container font-label-md text-[10px]`}>
+          {badge}
+        </span>
+      )}
+    </div>
   </div>
-</div>
+)}
