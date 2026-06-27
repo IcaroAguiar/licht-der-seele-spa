@@ -1,24 +1,28 @@
 ---
+import { getTranslations, getLocalePath } from "../utils/i18n";
+
+const currentLang = Astro.currentLocale;
+const t = getTranslations(currentLang);
 ---
 <nav class="fixed bottom-0 left-0 w-full z-50 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] bg-surface/95 backdrop-blur-lg border-t border-primary/5 shadow-[0_-4px_12px_rgba(40,17,35,0.05)] flex justify-around items-center px-4 md:hidden">
   <!-- Home (Active) -->
-  <a class="flex flex-col items-center justify-center text-primary font-bold bg-primary-fixed/30 rounded-full px-4 py-1 tap-highlight-transparent active:scale-90 transition-transform" href="#">
+  <a class="flex flex-col items-center justify-center text-primary font-bold bg-primary-fixed/30 rounded-full px-4 py-1 tap-highlight-transparent active:scale-[0.96] transition-transform" href={getLocalePath("/", currentLang)}>
     <span class="material-symbols-outlined mb-0.5 text-[24px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">nest_eco_leaf</span>
-    <span class="font-label-md text-[10px]">Home</span>
+    <span class="font-label-md text-[10px]">{t.nav.home}</span>
   </a>
   <!-- Services -->
-  <a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary tap-highlight-transparent active:scale-90 transition-transform px-2" href="#terapias">
+  <a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary tap-highlight-transparent active:scale-[0.96] transition-transform px-2" href={getLocalePath("#terapias", currentLang)}>
     <span class="material-symbols-outlined mb-0.5 text-[24px]" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">dry_cleaning</span>
-    <span class="font-label-md text-[10px]">Terapias</span>
+    <span class="font-label-md text-[10px]">{t.nav.therapies}</span>
   </a>
   <!-- Store -->
-  <a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary tap-highlight-transparent active:scale-90 transition-transform px-2" href="#produtos">
+  <a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary tap-highlight-transparent active:scale-[0.96] transition-transform px-2" href={getLocalePath("#produtos", currentLang)}>
     <span class="material-symbols-outlined mb-0.5 text-[24px]" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">local_mall</span>
-    <span class="font-label-md text-[10px]">Loja</span>
+    <span class="font-label-md text-[10px]">{t.nav.shop}</span>
   </a>
   <!-- Book -->
-  <a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary tap-highlight-transparent active:scale-90 transition-transform px-2" href="#agendamento">
+  <a class="flex flex-col items-center justify-center text-on-surface-variant/70 hover:text-primary tap-highlight-transparent active:scale-[0.96] transition-transform px-2" href={getLocalePath("/checkout", currentLang)}>
     <span class="material-symbols-outlined mb-0.5 text-[24px]" style="font-variation-settings: 'FILL' 0;" aria-hidden="true">event</span>
-    <span class="font-label-md text-[10px]">Agendar</span>
+    <span class="font-label-md text-[10px]">{t.nav.book}</span>
   </a>
 </nav>

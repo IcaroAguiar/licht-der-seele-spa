@@ -1,20 +1,24 @@
 ---
+import { getTranslations, getLocalePath } from "../utils/i18n";
+
+const currentLang = Astro.currentLocale;
+const t = getTranslations(currentLang);
 ---
 <footer class="bg-surface-container-low border-t border-outline-variant/30 pb-28 md:pb-12 reveal-element">
   <div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-gutter py-12 md:py-16 max-w-container-max mx-auto gap-8 text-center md:text-left">
     <div class="flex flex-col gap-4 items-center md:items-start">
       <span class="font-headline-sm text-headline-sm font-light text-primary">Licht der Seele</span>
-      <p class="text-on-surface-variant max-w-xs text-sm">Harmonizando espaços e almas através de rituais conscientes.</p>
+      <p class="text-on-surface-variant max-w-xs text-sm">{t.cta.footer_desc}</p>
     </div>
     <div class="flex flex-wrap gap-4 md:gap-8 justify-center">
-      <a class="nav-link-underline text-on-surface-variant hover:text-secondary transition-colors font-body-md text-sm" href="#">Termos de Uso</a>
-      <a class="nav-link-underline text-on-surface-variant hover:text-secondary transition-colors font-body-md text-sm" href="#">Privacidade</a>
-      <a class="nav-link-underline text-on-surface-variant hover:text-secondary transition-colors font-body-md text-sm" href="#">Contato</a>
-      <a class="nav-link-underline text-on-surface-variant hover:text-secondary transition-colors font-body-md text-sm" href="#agendamento">Agendamento</a>
-      <a class="nav-link-underline text-on-surface-variant hover:text-secondary transition-colors font-body-md text-sm" href="#">FAQ</a>
+      <a class="nav-link-underline text-on-surface-variant hover:text-secondary transition-colors font-body-md text-sm" href={getLocalePath("/", currentLang)}>{t.nav.terms}</a>
+      <a class="nav-link-underline text-on-surface-variant hover:text-secondary transition-colors font-body-md text-sm" href={getLocalePath("/", currentLang)}>{t.nav.privacy}</a>
+      <a class="nav-link-underline text-on-surface-variant hover:text-secondary transition-colors font-body-md text-sm" href={getLocalePath("/", currentLang)}>{t.nav.contact}</a>
+      <a class="nav-link-underline text-on-surface-variant hover:text-secondary transition-colors font-body-md text-sm" href={getLocalePath("#agendamento", currentLang)}>{t.nav.book}</a>
+      <a class="nav-link-underline text-on-surface-variant hover:text-secondary transition-colors font-body-md text-sm" href={getLocalePath("/", currentLang)}>{t.nav.faq}</a>
     </div>
   </div>
   <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter pb-4 text-center md:text-left">
-    <p class="text-on-surface-variant opacity-60 text-xs">© 2024 Licht der Seele Spa. Todos os direitos reservados. Luminous Holism.</p>
+    <p class="text-on-surface-variant opacity-60 text-xs">{t.nav.copyright}</p>
   </div>
 </footer>

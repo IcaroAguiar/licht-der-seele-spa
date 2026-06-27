@@ -1,23 +1,28 @@
 ---
 import "../styles/global.css";
+import { getTranslations } from "../utils/i18n";
 
 interface Props {
 	title?: string;
 	description?: string;
 }
 
+const t = getTranslations(Astro.currentLocale);
+
 const {
-	title = "Licht der Seele | Rituais e Bem-Estar Holístico",
-	description = "Apoio holístico e ferramentas tangíveis para integrar o autocuidado à sua rotina diária no coração de Zurique e online.",
+	title = t.seo.title,
+	description = t.seo.description,
 } = Astro.props;
+
+const currentLang = Astro.currentLocale || "pt-br";
 ---
 
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang={currentLang} class="scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<title>{title}</title>
@@ -56,22 +61,28 @@ const {
 			const observer = new IntersectionObserver((entries) => {
 				for (const entry of entries) {
 					if (entry.isIntersecting) {
-						// For desktop animations
-						if (entry.target.classList.contains('reveal-element')) {
+						if (entry.target.hasAttribute('data-timeline')) {
+							entry.target.classList.add('is-active');
+						} else if (entry.target.classList.contains('reveal-element')) {
 							entry.target.classList.add('is-visible');
-						}
-						// For mobile animations
-						if (entry.target.classList.contains('fade-in-up')) {
+						} else if (entry.target.classList.contains('fade-in-up')) {
 							entry.target.classList.add('visible');
 						}
-						observer.unobserve(entry.target); // Only animate once
+						observer.unobserve(entry.target);
 					}
 				}
 			}, observerOptions);
 
-			// Observe elements
-			document.querySelectorAll('.reveal-element, .fade-in-up').forEach((el) => {
+			document.querySelectorAll('.reveal-element, .fade-in-up, [data-timeline]').forEach((el) => {
 				observer.observe(el);
+			});
+
+			document.querySelectorAll('[data-timeline]').forEach((timeline) => {
+				window.setTimeout(() => {
+					if (!timeline.classList.contains('is-active')) {
+						timeline.classList.add('is-active');
+					}
+				}, 2500);
 			});
 		</script>
 	</body>
