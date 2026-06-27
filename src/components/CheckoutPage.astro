@@ -1,0 +1,154 @@
+---
+import { getTranslations, getLocalePath } from "../utils/i18n";
+import Layout from "../layouts/Layout.astro";
+
+const currentLang = Astro.currentLocale || "pt-br";
+const t = getTranslations(currentLang);
+---
+<Layout title={`${t.checkout.title} - Licht der Seele`} description={t.checkout.description}>
+
+  <!-- TopAppBar -->
+  <header class="w-full top-0 sticky bg-background z-40 border-b border-outline-variant/10">
+    <div class="flex justify-between items-center w-full px-gutter py-unit max-w-container-max mx-auto h-[72px]">
+      <a aria-label={t.checkout.back_btn} class="flex items-center text-primary hover:opacity-80 transition-opacity" href={getLocalePath("/", currentLang)}>
+        <span class="material-symbols-outlined text-2xl">arrow_back</span>
+      </a>
+      <div class="font-headline-md text-headline-md text-primary text-center absolute left-1/2 -translate-x-1/2 font-light">
+        Licht der Seele
+      </div>
+      <div class="flex items-center text-on-surface-variant gap-4">
+        <span class="material-symbols-outlined text-2xl">mail</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow w-full max-w-2xl mx-auto px-margin-mobile md:px-gutter py-12 md:py-16">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary-container/30 border border-outline-variant/20 mb-6">
+        <span class="material-symbols-outlined text-primary text-3xl">spa</span>
+      </div>
+      <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">{t.checkout.title}</h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">{t.checkout.description}</p>
+    </div>
+
+    <form id="contact-form" class="bg-surface-container-lowest rounded-2xl border border-outline-variant/20 p-8 md:p-10 space-y-6">
+      <!-- Nome -->
+      <div>
+        <label for="form-name" class="block text-xs font-label-md text-on-surface-variant uppercase tracking-wider mb-2 font-medium">{t.checkout.form_name}</label>
+        <input type="text" id="form-name" name="name" placeholder={t.checkout.form_name_ph} required class="w-full px-4 py-3 bg-white border border-outline-variant/40 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all font-body-md" />
+      </div>
+
+      <!-- Contato -->
+      <div>
+        <label for="form-contact" class="block text-xs font-label-md text-on-surface-variant uppercase tracking-wider mb-2 font-medium">{t.checkout.form_contact}</label>
+        <input type="text" id="form-contact" name="contact" placeholder={t.checkout.form_contact_ph} required class="w-full px-4 py-3 bg-white border border-outline-variant/40 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all font-body-md" />
+      </div>
+
+      <!-- Assunto -->
+      <div>
+        <label for="form-subject" class="block text-xs font-label-md text-on-surface-variant uppercase tracking-wider mb-2 font-medium">{t.checkout.form_subject}</label>
+        <select id="form-subject" name="subject" required class="w-full px-4 py-3 bg-white border border-outline-variant/40 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all font-body-md">
+          <option value="" disabled selected>—</option>
+          {t.checkout.form_subjects.map((opt) => (
+            <option value={opt}>{opt}</option>
+          ))}
+        </select>
+      </div>
+
+      <!-- Preferência -->
+      <div>
+        <label for="form-preference" class="block text-xs font-label-md text-on-surface-variant uppercase tracking-wider mb-2 font-medium">{t.checkout.form_preference}</label>
+        <select id="form-preference" name="preference" class="w-full px-4 py-3 bg-white border border-outline-variant/40 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all font-body-md">
+          <option value="" disabled selected>—</option>
+          {t.checkout.form_preferences.map((opt) => (
+            <option value={opt}>{opt}</option>
+          ))}
+        </select>
+      </div>
+
+      <!-- Mensagem -->
+      <div>
+        <label for="form-message" class="block text-xs font-label-md text-on-surface-variant uppercase tracking-wider mb-2 font-medium">{t.checkout.form_message}</label>
+        <textarea id="form-message" name="message" rows="4" placeholder={t.checkout.form_message_ph} class="w-full px-4 py-3 bg-white border border-outline-variant/40 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all font-body-md resize-none"></textarea>
+      </div>
+
+      <button type="submit" id="submit-btn" class="press w-full bg-primary text-on-primary rounded-full py-4 font-label-md text-label-md uppercase tracking-wider hover:-translate-y-0.5 transition-all cursor-pointer shadow-md hover:shadow-lg text-center flex items-center justify-center gap-2">
+        <span class="t-text-swap">
+          <span id="btn-text" class="t-text">{t.checkout.submit_btn}</span>
+          <span id="btn-text-sending" class="t-text-in" aria-hidden="true"></span>
+        </span>
+        <span class="t-icon-swap inline-flex items-center justify-center w-5 h-5" id="btn-icon-slot">
+          <span class="material-symbols-outlined t-icon t-icon-arrow text-[18px]" id="btn-arrow" aria-hidden="true">arrow_forward</span>
+          <span class="t-icon t-icon-enter" id="btn-spinner" aria-hidden="true">
+            <span class="block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+          </span>
+        </span>
+      </button>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full py-12 bg-surface-container flex flex-col items-center gap-4 px-gutter mt-auto border-t border-outline-variant/10">
+    <div class="font-headline-sm text-headline-sm text-primary mb-2 text-center font-light">
+      Licht der Seele
+    </div>
+    <div class="flex flex-wrap justify-center gap-6 mb-4 text-sm">
+      <a class="nav-link-underline font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">{t.nav.privacy}</a>
+      <a class="nav-link-underline font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">{t.nav.terms}</a>
+      <a class="nav-link-underline font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">{t.nav.contact}</a>
+    </div>
+    <div class="font-body-md text-on-surface-variant text-center opacity-70 text-xs">
+      {t.nav.copyright}
+    </div>
+  </footer>
+
+  <script define:vars={{ successPath: getLocalePath("/sucesso", currentLang) }}>
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = document.getElementById('btn-text');
+    const btnTextSending = document.getElementById('btn-text-sending');
+    const textSwap = document.querySelector('.t-text-swap');
+    const iconSlot = document.getElementById('btn-icon-slot');
+
+    const sendingTextByLang = {
+      'pt-br': "Enviando...",
+      'pt-pt': "A enviar...",
+      'de-ch': "Senden...",
+      'en': "Sending..."
+    };
+    const htmlLang = (document.documentElement.lang || 'pt-br').toLowerCase();
+    const sendingText = sendingTextByLang[htmlLang] || "Enviando...";
+
+    if (form && submitBtn) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+
+        // transitions-dev: text states swap (arrow text -> "Sending...")
+        if (btnTextSending && textSwap) {
+          btnTextSending.textContent = sendingText;
+          // Remove swapped state, reflow, re-add so the swap replays cleanly.
+          textSwap.classList.remove('is-swapped');
+          void textSwap.offsetWidth;
+          textSwap.classList.add('is-swapped');
+        }
+
+        // transitions-dev: icon swap (arrow -> spinner)
+        if (iconSlot) {
+          iconSlot.classList.remove('is-swapped');
+          void iconSlot.offsetWidth;
+          iconSlot.classList.add('is-swapped');
+        }
+
+        setTimeout(() => {
+          window.location.href = successPath;
+        }, 1400);
+      });
+    }
+  </script>
+</Layout>

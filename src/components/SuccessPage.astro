@@ -1,0 +1,152 @@
+---
+import { Image } from "astro:assets";
+import { getTranslations, getLocalePath } from "../utils/i18n";
+import Layout from "../layouts/Layout.astro";
+
+// Import local image for the vertical layout panel
+import heroDesktopImage from "../assets/images/hero_desktop.jpg";
+
+const currentLang = Astro.currentLocale || "pt-br";
+const t = getTranslations(currentLang);
+---
+<Layout title={`${t.success.title} - Licht der Seele`} description={t.success.description}>
+  <style is:inline>
+    .border-gold {
+      border-color: rgba(208, 195, 201, 0.4); /* Dourado Velado at 40% */
+    }
+    
+    .shadow-hover {
+      box-shadow: 0 10px 30px -10px rgba(63, 37, 56, 0.15); /* primary-container */
+    }
+  </style>
+
+  <main class="w-full max-w-[1000px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 my-auto py-12 md:py-16 px-margin-mobile md:px-gutter min-h-[90vh] items-center">
+    <!-- Content Column -->
+    <div class="lg:col-span-7 flex flex-col justify-center space-y-10">
+      
+      <!-- Section 1: Hero Confirmation -->
+      <section class="space-y-4 text-center lg:text-left">
+        <div id="success-check" class="t-success-check inline-flex items-center justify-center w-16 h-16 rounded-full bg-surface-container-low border border-gold mb-2 mx-auto lg:mx-0">
+          <svg class="t-check-circle absolute inset-0 w-full h-full" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2" class="text-primary opacity-20" />
+          </svg>
+          <svg class="t-check-mark w-8 h-8 text-primary" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" pathLength="1" />
+          </svg>
+        </div>
+        <h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary">
+          {t.success.title}
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto lg:mx-0">
+          {t.success.description}
+        </p>
+      </section>
+
+      <!-- Section 2: Ritual Details Card -->
+      <section class="bg-surface-container-lowest rounded-xl border border-gold p-8 relative overflow-hidden group hover:shadow-hover transition-shadow duration-500">
+        <div class="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+          <span class="material-symbols-outlined text-6xl text-primary">favorite</span>
+        </div>
+        <h2 class="font-headline-sm text-headline-sm text-primary mb-6 border-b border-gold pb-4 font-medium">{t.success.card_title}</h2>
+        <div class="space-y-5 font-body-md text-body-md text-on-surface-variant">
+          <div class="flex items-start">
+            <span class="material-symbols-outlined mr-4 mt-0.5 text-primary text-[20px]">local_florist</span>
+            <div>
+              <span class="block font-label-md text-[10px] text-outline tracking-widest uppercase mb-0.5">{t.success.ritual}</span>
+              <span class="text-on-surface font-medium">{t.success.ritual_val}</span>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <span class="material-symbols-outlined mr-4 mt-0.5 text-primary text-[20px]">face_2</span>
+            <div>
+              <span class="block font-label-md text-[10px] text-outline tracking-widest uppercase mb-0.5">{t.success.therapist}</span>
+              <span class="text-on-surface font-medium">{t.success.therapist_val}</span>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <span class="material-symbols-outlined mr-4 mt-0.5 text-primary text-[20px]">calendar_month</span>
+            <div>
+              <span class="block font-label-md text-[10px] text-outline tracking-widest uppercase mb-0.5">{t.success.datetime}</span>
+              <span class="text-on-surface font-medium">{t.success.datetime_val}</span>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <span class="material-symbols-outlined mr-4 mt-0.5 text-primary text-[20px]">location_on</span>
+            <div>
+              <span class="block font-label-md text-[10px] text-outline tracking-widest uppercase mb-0.5">{t.success.location}</span>
+              <span class="text-on-surface font-medium">{t.success.location_val}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Preparation Instructions -->
+      <section class="space-y-5">
+        <h3 class="font-headline-md text-headline-md text-primary font-light">{t.success.prep_title}</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-surface-container rounded-lg p-5 flex flex-col items-center text-center border border-outline-variant/10">
+            <span class="material-symbols-outlined mb-2.5 text-secondary">water_drop</span>
+            <h4 class="font-label-md text-[11px] text-primary mb-1.5 uppercase tracking-wider font-semibold">{t.success.step1_title}</h4>
+            <p class="font-body-md text-on-surface-variant text-xs leading-relaxed">{t.success.step1_desc}</p>
+          </div>
+          <div class="bg-surface-container rounded-lg p-5 flex flex-col items-center text-center border border-outline-variant/10">
+            <span class="material-symbols-outlined mb-2.5 text-secondary">self_improvement</span>
+            <h4 class="font-label-md text-[11px] text-primary mb-1.5 uppercase tracking-wider font-semibold">{t.success.step2_title}</h4>
+            <p class="font-body-md text-on-surface-variant text-xs leading-relaxed">{t.success.step2_desc}</p>
+          </div>
+          <div class="bg-surface-container rounded-lg p-5 flex flex-col items-center text-center border border-outline-variant/10">
+            <span class="material-symbols-outlined mb-2.5 text-secondary">auto_awesome</span>
+            <h4 class="font-label-md text-[11px] text-primary mb-1.5 uppercase tracking-wider font-semibold">{t.success.step3_title}</h4>
+            <p class="font-body-md text-on-surface-variant text-xs leading-relaxed">{t.success.step3_desc}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Next Steps Buttons -->
+      <section class="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gold">
+        <a href={getLocalePath("/", currentLang)} class="flex-1 bg-transparent border border-primary text-primary font-label-md text-label-md py-4 px-8 rounded-full hover:bg-surface-container-low transition-colors duration-300 flex items-center justify-center cursor-pointer uppercase tracking-wider text-xs font-semibold">
+          {t.success.back_home}
+        </a>
+        <button type="button" class="flex-1 bg-primary text-on-primary font-label-md text-label-md py-4 px-8 rounded-full hover:translate-y-[-1px] hover:shadow-md transition-all duration-300 flex items-center justify-center group cursor-pointer uppercase tracking-wider text-xs font-semibold">
+          {t.success.dashboard}
+          <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform text-[18px]">arrow_forward</span>
+        </button>
+      </section>
+
+    </div>
+
+    <!-- Image Column (Desktop only) -->
+    <div class="hidden lg:block lg:col-span-5 relative h-full min-h-[600px] rounded-2xl overflow-hidden border border-gold p-2 bg-surface-container-lowest">
+      <div class="w-full h-full rounded-xl overflow-hidden relative">
+        <Image alt="Wellness sanctuary" class="object-cover w-full h-full absolute inset-0 grayscale-[0.2]" src={heroDesktopImage} />
+        <div class="absolute inset-0 bg-primary/5 mix-blend-multiply"></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // transitions-dev: success check orchestration
+    const playSuccessCheck = () => {
+      const check = document.getElementById('success-check');
+      if (!check) return;
+      const mark = check.querySelector('.t-check-mark path');
+      // Set the dasharray to the path length so the stroke draws in fully.
+      if (mark) {
+        const totalLength = mark.getTotalLength ? mark.getTotalLength() : 1;
+        mark.style.strokeDasharray = `${totalLength}`;
+        mark.style.strokeDashoffset = `${totalLength}`;
+      }
+      // Remove any prior state, force reflow, then re-add to guarantee replay.
+      check.classList.remove('is-animating');
+      void check.offsetWidth;
+      check.classList.add('is-animating');
+    };
+
+    // Run on load (respect reduced motion: CSS guards handle the visual no-op).
+    if (document.readyState !== 'loading') {
+      playSuccessCheck();
+    } else {
+      document.addEventListener('DOMContentLoaded', playSuccessCheck);
+    }
+  </script>
+</Layout>
