@@ -3,12 +3,10 @@ import { Image } from "astro:assets";
 import founderImage from "../assets/images/founder.png";
 import heroDesktopImage from "../assets/images/hero_desktop.jpg";
 import heroMobileImage from "../assets/images/hero_mobile.jpg";
-import sabonetesComboImage from "../assets/images/products/sabonetes-combo.png";
-import sabonetesVerdesImage from "../assets/images/products/sabonetes-verdes.png";
 import BottomNav from "./BottomNav.astro";
 import Footer from "./Footer.astro";
 import Header from "./Header.astro";
-import ProductCard from "./ProductCard.astro";
+import ProductGrid from "./ProductGrid.astro";
 import ServiceItem from "./ServiceItem.astro";
 import ProgramaLuzEssencia from "./ProgramaLuzEssencia.astro";
 import Layout from "../layouts/Layout.astro";
@@ -17,8 +15,7 @@ import { getTranslations, getLocalePath } from "../utils/i18n";
 
 const t = getTranslations(Astro.currentLocale);
 const testimonialDelays = ["delay-100", "delay-200", "delay-300"] as const;
-const sabonetesShowcaseVideo = "/videos/sabonetes-showcase.mp4";
-const sabonetesDetailVideo = "/videos/sabonetes-detail.mp4";
+const lojaPath = getLocalePath("/loja", Astro.currentLocale);
 ---
 
 <Layout>
@@ -157,64 +154,12 @@ const sabonetesDetailVideo = "/videos/sabonetes-detail.mp4";
           <span class="font-label-md text-label-md text-secondary uppercase tracking-[0.2em] mb-4 block">{t.store.tagline}</span>
           <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">{t.store.title}</h2>
         </div>
-        <a class="nav-link-underline font-label-md text-label-md text-primary pb-1 transition-all hidden md:inline-block" href="#">{t.store.view_all}</a>
+        <a class="nav-link-underline font-label-md text-label-md text-primary pb-1 transition-all hidden md:inline-block" href={lojaPath}>{t.store.view_all}</a>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-        <!-- Sabonetes Energéticos -->
-        <ProductCard
-          title={t.store.sabonetes.title}
-          description={t.store.sabonetes.desc}
-          price="CHF 20"
-          image={sabonetesVerdesImage}
-          video={sabonetesShowcaseVideo}
-          badge={t.store.sabonetes.badge}
-          badgeBg="bg-tertiary-fixed/40"
-        />
-
-        <!-- Combo 4 Sabonetes -->
-        <ProductCard
-          title={t.store.combo.title}
-          description={t.store.combo.desc}
-          price="CHF 49,90"
-          image={sabonetesComboImage}
-          video={sabonetesDetailVideo}
-          badge={t.store.combo.badge}
-          badgeBg="bg-secondary-fixed/60"
-          delayClass="delay-100"
-        />
-
-        <!-- Leitura de Oráculo / Cabala Terapêutica -->
-        <ProductCard
-          title={t.store.oraculo.title}
-          description={t.store.oraculo.desc}
-          price="CHF 150"
-          isPlaceholder={true}
-          badge={t.store.oraculo.badge}
-          badgeBg="bg-tertiary-fixed/40"
-          delayClass="delay-200"
-        />
-
-        <!-- Banhoterapia + Limpeza Completa -->
-        <ProductCard
-          title={t.store.banhoterapia.title}
-          description={t.store.banhoterapia.desc}
-          price="CHF 600"
-          isPlaceholder={true}
-          badge={t.store.banhoterapia.badge}
-          badgeBg="bg-primary-fixed/40"
-          delayClass="delay-300"
-        />
-
-        {/* Produtos não confirmados — ocultos até confirmação de preço e descrição pela Daiane
-        <ProductCard title={t.store.oleos.title} description={t.store.oleos.desc} price="CHF 40" badge={t.store.oleos.badge} isPlaceholder={true} />
-        <ProductCard title={t.store.banhos.title} description={t.store.banhos.desc} image={banhosImage} />
-        <ProductCard title={t.store.kits.title} description={t.store.kits.desc} image={kitsImage} />
-        <ProductCard title={t.store.ebooks.title} description={t.store.ebooks.desc} image={ebooksImage} />
-        */}
-      </div>
+      <ProductGrid />
 
       <div class="mt-8 text-center md:hidden">
-        <a href="#" class="text-primary font-label-md text-label-md border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors">
+        <a href={lojaPath} class="text-primary font-label-md text-label-md border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors">
           {t.hero.view_boutique}
         </a>
       </div>
