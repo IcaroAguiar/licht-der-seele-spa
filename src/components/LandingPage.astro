@@ -1,0 +1,377 @@
+---
+import { Image } from "astro:assets";
+import founderImage from "../assets/images/founder.png";
+import heroDesktopImage from "../assets/images/hero_desktop.jpg";
+import heroMobileImage from "../assets/images/hero_mobile.jpg";
+import sabonetesComboImage from "../assets/images/products/sabonetes-combo.png";
+import sabonetesVerdesImage from "../assets/images/products/sabonetes-verdes.png";
+import BottomNav from "./BottomNav.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import ProductCard from "./ProductCard.astro";
+import ServiceItem from "./ServiceItem.astro";
+import ProgramaLuzEssencia from "./ProgramaLuzEssencia.astro";
+import Layout from "../layouts/Layout.astro";
+
+import { getTranslations, getLocalePath } from "../utils/i18n";
+
+const t = getTranslations(Astro.currentLocale);
+const testimonialDelays = ["delay-100", "delay-200", "delay-300"] as const;
+const sabonetesShowcaseVideo = "/videos/sabonetes-showcase.mp4";
+const sabonetesDetailVideo = "/videos/sabonetes-detail.mp4";
+---
+
+<Layout>
+  <!-- Navigation Header -->
+  <Header />
+
+  <main class="pt-16 md:pt-20 pb-20 md:pb-0">
+    <!-- HERO SECTION -->
+    <!-- Desktop Hero -->
+    <section class="hidden md:block relative pt-32 pb-section-gap-lg px-gutter max-w-container-max mx-auto overflow-hidden">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="order-2 md:order-1">
+          <span class="reveal-element font-label-md text-label-md text-secondary uppercase tracking-[0.2em] mb-6 block">{t.hero.tagline}</span>
+          <h1 class="reveal-element delay-100 font-display-lg text-display-lg text-primary mb-8 max-w-md">
+            {t.hero.h1_start}<br/><span class="italic text-secondary">{t.hero.h1_highlight}</span>
+          </h1>
+          <p class="reveal-element delay-200 font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-sm">
+            {t.hero.description}
+          </p>
+          <div class="reveal-element delay-300 flex flex-col sm:flex-row gap-4">
+            <a href={getLocalePath("/checkout", Astro.currentLocale)} class="bg-primary text-on-primary px-10 py-5 rounded-full font-label-md text-label-md hover:bg-primary/90 active:scale-95 hover:shadow-lg transition-all duration-200 text-center">
+              {t.hero.book_btn}
+            </a>
+            <a href="#produtos" class="border border-primary text-primary px-10 py-5 rounded-full font-label-md text-label-md hover:bg-surface-container-low active:scale-95 transition-all duration-200 text-center">
+              {t.hero.products_btn}
+            </a>
+          </div>
+        </div>
+        <div class="order-1 md:order-2 relative">
+          <div class="float-anim aspect-[4/5] rounded-[40px] overflow-hidden bg-surface-container-low border border-outline-variant/30 reveal-element delay-200">
+            <Image alt="Spa Ritual" class="img-outline w-full h-full object-cover grayscale-[0.2] hover:scale-105 transition-transform duration-700" src={heroDesktopImage} loading="eager" fetchpriority="high" />
+          </div>
+          <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-secondary-container/20 rounded-full blur-3xl -z-10"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile Hero -->
+    <section class="md:hidden min-h-[85vh] flex flex-col items-center justify-center px-margin-mobile pt-12 pb-8 text-center relative overflow-hidden">
+      <div class="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(circle_at_center,var(--color-secondary-container)_0%,transparent_70%)]"></div>
+      <div class="relative z-10 w-full max-w-sm mx-auto mb-8 float-animation">
+        <Image alt="A serene spa environment with soft, warm lighting." class="img-outline w-full h-auto rounded-[40px] shadow-2xl object-cover aspect-[4/5]" src={heroMobileImage} loading="eager" fetchpriority="high" />
+      </div>
+      <div class="z-10 flex flex-col items-center gap-4">
+        <span class="fade-in-up inline-block px-4 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-md text-label-md tracking-widest uppercase text-xs">{t.hero.location}</span>
+        <h2 class="fade-in-up font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight leading-tight" style="transition-delay: 0.1s;">
+          {t.hero.h1_start}<br/><span class="italic text-secondary">{t.hero.h1_highlight}</span>
+        </h2>
+        <p class="fade-in-up font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto mt-2" style="transition-delay: 0.2s;">{t.hero.description_mobile}</p>
+        <a href={getLocalePath("/checkout", Astro.currentLocale)} class="fade-in-up mt-6 bg-primary text-surface font-label-md text-label-md px-8 py-4 rounded-full hover:bg-on-primary-fixed-variant transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(40,17,35,0.15)] flex items-center gap-2" style="transition-delay: 0.3s;">
+          <span>{t.hero.book_btn_mobile}</span>
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_right_alt</span>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- RITUAL PROMISE (Desktop Only) -->
+    <section class="hidden md:block bg-surface-container-low py-section-gap-md px-gutter">
+      <div class="max-w-3xl mx-auto text-center reveal-element">
+        <h2 class="font-headline-md text-headline-md text-primary mb-6 italic font-light">
+          "{t.promise.quote}"
+        </h2>
+        <div class="w-16 h-[1px] bg-outline mx-auto mt-12 opacity-30"></div>
+      </div>
+    </section>
+
+
+    <!-- SERVICES / THERAPIES SECTION -->
+    <section id="terapias" class="py-section-gap-lg px-margin-mobile md:px-gutter max-w-container-max mx-auto bg-surface">
+      <div class="grid md:grid-cols-12 gap-12 md:gap-16">
+        <div class="md:col-span-4 reveal-element">
+          <span class="font-label-md text-label-md text-secondary uppercase tracking-[0.2em] mb-4 block">{t.services.tagline}</span>
+          <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-6 md:mb-8 leading-tight">{t.services.title}</h2>
+          <p class="text-on-surface-variant mb-8 md:mb-10 hidden md:block">{t.services.desc_desktop}</p>
+          <p class="text-on-surface-variant mb-8 md:mb-10 md:hidden">{t.services.desc_mobile}</p>
+          <a href={getLocalePath("/checkout", Astro.currentLocale)} class="inline-block bg-primary text-on-primary px-8 py-4 rounded-full font-label-md text-label-md hover:bg-primary/90 active:scale-95 transition-all duration-200 text-center">
+            {t.services.book_btn}
+          </a>
+        </div>
+
+        <div class="md:col-span-7 md:col-start-6">
+          <!-- Desktop Layout list -->
+          <div class="hidden md:block space-y-4">
+            <ServiceItem
+              num="01"
+              title={t.services.reiki.title}
+              description={t.services.reiki.desc}
+              badge={t.services.reiki.badge}
+              delayClass="delay-100"
+              desktopOnly={true}
+            />
+            <ServiceItem
+              num="02"
+              title={t.services.cabala.title}
+              description={t.services.cabala.desc}
+              badge={t.services.cabala.badge}
+              delayClass="delay-200"
+              desktopOnly={true}
+            />
+          </div>
+
+          <!-- Mobile Layout cards -->
+          <div class="md:hidden flex flex-col gap-4">
+            <ServiceItem
+              num="01"
+              title={t.services.reiki.title}
+              description={t.services.reiki.desc}
+              duration={t.services.reiki.duration}
+              price={t.services.reiki.price}
+              bgGradClass="bg-primary-fixed/20"
+              delayClass="delay-100"
+              mobileOnly={true}
+            />
+            <ServiceItem
+              num="02"
+              title={t.services.cabala.title}
+              description={t.services.cabala.desc}
+              price={t.services.cabala.price}
+              bgGradClass="bg-secondary-fixed/20"
+              delayClass="delay-200"
+              mobileOnly={true}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMA LUZ E ESSÊNCIA -->
+    <ProgramaLuzEssencia />
+
+    <!-- STORE / PRODUCTS SECTION -->
+    <section id="produtos" class="py-section-gap-lg px-margin-mobile md:px-gutter max-w-container-max mx-auto">
+      <div class="flex justify-between items-end mb-12 md:mb-16 reveal-element">
+        <div>
+          <span class="font-label-md text-label-md text-secondary uppercase tracking-[0.2em] mb-4 block">{t.store.tagline}</span>
+          <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">{t.store.title}</h2>
+        </div>
+        <a class="nav-link-underline font-label-md text-label-md text-primary pb-1 transition-all hidden md:inline-block" href="#">{t.store.view_all}</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <!-- Sabonetes Energéticos -->
+        <ProductCard
+          title={t.store.sabonetes.title}
+          description={t.store.sabonetes.desc}
+          price="CHF 20"
+          image={sabonetesVerdesImage}
+          video={sabonetesShowcaseVideo}
+          badge={t.store.sabonetes.badge}
+          badgeBg="bg-tertiary-fixed/40"
+        />
+
+        <!-- Combo 4 Sabonetes -->
+        <ProductCard
+          title={t.store.combo.title}
+          description={t.store.combo.desc}
+          price="CHF 49,90"
+          image={sabonetesComboImage}
+          video={sabonetesDetailVideo}
+          badge={t.store.combo.badge}
+          badgeBg="bg-secondary-fixed/60"
+          delayClass="delay-100"
+        />
+
+        <!-- Leitura de Oráculo / Cabala Terapêutica -->
+        <ProductCard
+          title={t.store.oraculo.title}
+          description={t.store.oraculo.desc}
+          price="CHF 150"
+          isPlaceholder={true}
+          badge={t.store.oraculo.badge}
+          badgeBg="bg-tertiary-fixed/40"
+          delayClass="delay-200"
+        />
+
+        <!-- Banhoterapia + Limpeza Completa -->
+        <ProductCard
+          title={t.store.banhoterapia.title}
+          description={t.store.banhoterapia.desc}
+          price="CHF 600"
+          isPlaceholder={true}
+          badge={t.store.banhoterapia.badge}
+          badgeBg="bg-primary-fixed/40"
+          delayClass="delay-300"
+        />
+
+        {/* Produtos não confirmados — ocultos até confirmação de preço e descrição pela Daiane
+        <ProductCard title={t.store.oleos.title} description={t.store.oleos.desc} price="CHF 40" badge={t.store.oleos.badge} isPlaceholder={true} />
+        <ProductCard title={t.store.banhos.title} description={t.store.banhos.desc} image={banhosImage} />
+        <ProductCard title={t.store.kits.title} description={t.store.kits.desc} image={kitsImage} />
+        <ProductCard title={t.store.ebooks.title} description={t.store.ebooks.desc} image={ebooksImage} />
+        */}
+      </div>
+
+      <div class="mt-8 text-center md:hidden">
+        <a href="#" class="text-primary font-label-md text-label-md border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors">
+          {t.hero.view_boutique}
+        </a>
+      </div>
+    </section>
+
+
+    <!-- FOUNDER STORY (Desktop Only per mobile specs) -->
+    <section id="sobre" class="hidden md:block py-section-gap-lg px-gutter bg-surface-container-low overflow-hidden">
+      <div class="max-w-container-max mx-auto grid md:grid-cols-2 gap-20 items-center">
+        <div class="relative reveal-element">
+          <div class="aspect-[3/4] rounded-[60px] overflow-hidden border border-outline-variant/20 shadow-2xl">
+            <Image alt="Daiane — fundadora da Licht der Seele" class="img-outline w-full h-full object-cover object-top" src={founderImage} />
+          </div>
+          <div class="absolute -top-6 -right-6 p-8 bg-surface rounded-3xl border border-outline-variant/20 max-w-[200px]">
+            <p class="font-label-md text-xs text-primary leading-relaxed">{t.founder.badge}</p>
+          </div>
+        </div>
+        <div class="max-w-md reveal-element delay-100">
+          <span class="font-label-md text-label-md text-secondary uppercase tracking-[0.2em] mb-4 block">{t.founder.tagline}</span>
+          <h2 class="font-headline-lg text-headline-lg text-primary mb-8">{t.founder.title}</h2>
+          <p class="text-on-surface-variant mb-6 leading-relaxed">
+            {t.founder.desc1}
+          </p>
+          <p class="text-on-surface-variant mb-10 leading-relaxed">
+            {t.founder.desc2}
+          </p>
+          <a class="inline-flex items-center gap-4 font-label-md text-primary group nav-link-underline pb-1" href="#">
+            {t.founder.link} 
+            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- WHERE TO FIND US -->
+    <section id="local" class="py-section-gap-lg px-margin-mobile md:px-gutter max-w-container-max mx-auto">
+      <div class="text-center mb-12 md:mb-16 reveal-element">
+        <span class="font-label-md text-label-md text-secondary uppercase tracking-[0.2em] mb-4 block">{t.local.tagline}</span>
+        <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">{t.local.title}</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
+        <div class="bg-surface-container-low rounded-2xl p-8 border border-outline-variant/20 text-center reveal-element delay-100">
+          <div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center mx-auto mb-5 text-primary">
+            <span class="material-symbols-outlined text-2xl" aria-hidden="true">storefront</span>
+          </div>
+          <h3 class="font-headline-sm text-headline-sm text-primary mb-3">{t.local.presencial_titulo}</h3>
+          <p class="text-on-surface-variant font-body-md text-sm">{t.local.presencial}</p>
+        </div>
+        <div class="bg-surface-container-low rounded-2xl p-8 border border-outline-variant/20 text-center reveal-element delay-200">
+          <div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center mx-auto mb-5 text-primary">
+            <span class="material-symbols-outlined text-2xl" aria-hidden="true">videocam</span>
+          </div>
+          <h3 class="font-headline-sm text-headline-sm text-primary mb-3">{t.local.online_titulo}</h3>
+          <p class="text-on-surface-variant font-body-md text-sm">{t.local.online}</p>
+        </div>
+        <div class="bg-surface-container-low rounded-2xl p-8 border border-outline-variant/20 text-center reveal-element delay-300">
+          <div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center mx-auto mb-5 text-primary">
+            <span class="material-symbols-outlined text-2xl" aria-hidden="true">home</span>
+          </div>
+          <h3 class="font-headline-sm text-headline-sm text-primary mb-3">{t.local.domicilio_titulo}</h3>
+          <p class="text-on-surface-variant font-body-md text-sm">{t.local.domicilio}</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- HOW IT WORKS (Desktop Only per mobile specs) -->
+    <section class="hidden md:block py-section-gap-lg bg-breathe">
+      <div class="px-gutter max-w-container-max mx-auto">
+        <div class="text-center mb-20 reveal-element">
+          <h2 class="font-headline-lg text-headline-lg text-primary mb-4">{t.journey.title}</h2>
+          <p class="text-on-surface-variant">{t.journey.subtitle}</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-12 text-center">
+          <div class="p-8 reveal-element delay-100">
+            <div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-8 text-primary transition-transform duration-300 hover:scale-110 cursor-default">
+              <span class="material-symbols-outlined text-3xl" aria-hidden="true">calendar_today</span>
+            </div>
+            <h3 class="font-headline-sm text-headline-sm text-primary mb-4">{t.journey.step1.title}</h3>
+            <p class="text-on-surface-variant text-sm">{t.journey.step1.desc}</p>
+          </div>
+          <div class="p-8 md:border-x border-outline-variant/10 reveal-element delay-200">
+            <div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-8 text-primary transition-transform duration-300 hover:scale-110 cursor-default">
+              <span class="material-symbols-outlined text-3xl" aria-hidden="true">self_care</span>
+            </div>
+            <h3 class="font-headline-sm text-headline-sm text-primary mb-4">{t.journey.step2.title}</h3>
+            <p class="text-on-surface-variant text-sm">{t.journey.step2.desc}</p>
+          </div>
+          <div class="p-8 reveal-element delay-300">
+            <div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-8 text-primary transition-transform duration-300 hover:scale-110 cursor-default">
+              <span class="material-symbols-outlined text-3xl" aria-hidden="true">auto_fix_high</span>
+            </div>
+            <h3 class="font-headline-sm text-headline-sm text-primary mb-4">{t.journey.step3.title}</h3>
+            <p class="text-on-surface-variant text-sm">{t.journey.step3.desc}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- TESTIMONIALS (Desktop Only per mobile specs) -->
+    <section class="hidden md:block py-section-gap-lg px-gutter bg-surface-bright">
+      <div class="max-w-container-max mx-auto">
+        <div class="reveal-element text-center mb-12 max-w-xl mx-auto">
+          <h2 class="font-headline-md text-headline-md text-primary mb-3 text-balance">{t.testimonials.title}</h2>
+          <p class="text-on-surface-variant font-body-md text-pretty">{t.testimonials.subtitle}</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-12">
+          {t.testimonials.items.map((item, i) => (
+            <div
+              class:list={[
+                "testimonial-card reveal-element flex flex-col justify-between p-10 bg-white/50 rounded-3xl border border-outline-variant/10",
+                testimonialDelays[i],
+                i === 1 && "testimonial-card--elevated",
+              ]}
+            >
+              <p class="font-body-lg text-primary italic mb-10">"{item.quote}"</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FINAL CTA SECTION -->
+    <div id="agendamento">
+      <!-- Desktop CTA -->
+      <section class="hidden md:block py-section-gap-lg px-gutter text-center relative overflow-hidden reveal-element">
+        <div class="absolute inset-0 bg-primary/5 -z-10"></div>
+        <div class="max-w-2xl mx-auto">
+          <h2 class="font-display-lg text-display-lg text-primary mb-10">{t.cta.title}</h2>
+          <p class="text-on-surface-variant mb-12 text-lg">{t.cta.desc_desktop}</p>
+          <a href={getLocalePath("/checkout", Astro.currentLocale)} class="inline-block bg-primary text-on-primary px-12 py-6 rounded-full font-label-md text-label-md hover:bg-primary/90 active:scale-95 transition-all duration-200 shadow-xl">
+            {t.cta.btn}
+          </a>
+        </div>
+      </section>
+
+      <!-- Mobile CTA -->
+      <section class="md:hidden py-section-gap-md px-margin-mobile bg-primary text-surface text-center rounded-t-[40px] mt-8 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_top,var(--color-primary-fixed)_0%,transparent_60%)]"></div>
+        <div class="relative z-10 max-w-md mx-auto">
+          <span class="material-symbols-outlined text-4xl mb-4 text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">self_care</span>
+          <h2 class="font-headline-md text-headline-md mb-4 text-surface">{t.cta.title}</h2>
+          <p class="font-body-md text-body-md text-surface-variant/80 mb-8">{t.cta.desc_mobile}</p>
+          <a href={getLocalePath("/checkout", Astro.currentLocale)} class="inline-block bg-surface text-primary font-label-md text-label-md px-8 py-4 rounded-full hover:bg-surface-variant transition-all duration-300 w-full sm:w-auto shadow-lg text-center font-semibold">
+            {t.cta.btn}
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Desktop Footer -->
+  <Footer />
+
+  <!-- Mobile Floating Navigation Bar -->
+  <BottomNav />
+</Layout>

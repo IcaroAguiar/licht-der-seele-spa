@@ -7,6 +7,7 @@ interface Props {
 	description: string;
 	price?: string;
 	image?: string | ImageMetadata;
+	video?: string;
 	badge?: string;
 	badgeBg?: string;
 	delayClass?: string;
@@ -20,6 +21,7 @@ const {
 	description,
 	price,
 	image,
+	video,
 	badge,
 	badgeBg = "bg-tertiary-fixed/40",
 	delayClass = "",
@@ -27,6 +29,9 @@ const {
 	desktopOnly = false,
 	mobileOnly = false,
 } = Astro.props;
+
+const posterSrc =
+	typeof image === "object" && image !== null && "src" in image ? image.src : undefined;
 ---
 
 <!-- Desktop Layout -->
@@ -38,7 +43,23 @@ const {
           <span class="material-symbols-outlined text-outline-variant text-5xl" aria-hidden="true">spa</span>
         </div>
       ) : (
-        <Image alt={title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={image} />
+        <div class="product-media relative w-full h-full">
+          <Image alt={title} class={`img-outline w-full h-full object-cover transition-transform duration-500 ${video ? "product-media__still" : "group-hover:scale-105"}`} src={image} />
+          {video && (
+            <video
+              class="product-media__video img-outline absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster={posterSrc}
+              aria-hidden="true"
+            >
+              <source src={video} type="video/mp4" />
+            </video>
+          )}
+        </div>
       )}
     </div>
     <div class="flex justify-between items-start group-hover:-translate-y-1 transition-transform duration-300">
@@ -46,7 +67,7 @@ const {
         <h3 class="font-headline-sm text-headline-sm text-primary mb-1">{title}</h3>
         <p class="text-on-surface-variant font-body-md text-sm">{description}</p>
       </div>
-      {price && <span class="font-body-md text-secondary ml-2 font-medium">{price}</span>}
+      {price && <span class="font-body-md text-secondary ml-2 font-medium tabular-nums">{price}</span>}
     </div>
   </div>
 )}
@@ -58,13 +79,29 @@ const {
       {isPlaceholder || !image ? (
         <span class="material-symbols-outlined text-outline-variant text-4xl" aria-hidden="true">spa</span>
       ) : (
-        <Image alt={title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={image} />
+        <div class="product-media relative w-full h-full">
+          <Image alt={title} class={`img-outline w-full h-full object-cover transition-transform duration-500 ${video ? "product-media__still" : "group-hover:scale-105"}`} src={image} />
+          {video && (
+            <video
+              class="product-media__video img-outline absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster={posterSrc}
+              aria-hidden="true"
+            >
+              <source src={video} type="video/mp4" />
+            </video>
+          )}
+        </div>
       )}
     </div>
     <div class="flex-1">
       <div class="flex justify-between items-start mb-1">
         <h4 class="font-label-md text-label-md text-primary text-base">{title}</h4>
-        {price && <span class="font-body-md text-body-md text-secondary">{price}</span>}
+        {price && <span class="font-body-md text-body-md text-secondary tabular-nums">{price}</span>}
       </div>
       <p class="font-body-md text-body-md text-sm text-on-surface-variant mb-2 line-clamp-2">{description}</p>
       {badge && (
