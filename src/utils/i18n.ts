@@ -47,6 +47,9 @@ export const translations = {
       tagline: "A Loja",
       title: "Ferramentas de Intenção",
       view_all: "Ver coleção completa",
+      page_title: "Coleção completa",
+      page_desc: "Sabonetes artesanais, combos e sessões terapêuticas para levar o ritual de cuidado para o seu dia a dia.",
+      page_cta: "Falar com a Daiane",
       sabonetes: {
         title: "Sabonetes Energéticos",
         desc: "Feitos à mão com óleos essenciais e ervas específicas para limpeza áurica e proteção energética.",
@@ -272,6 +275,9 @@ export const translations = {
       tagline: "A Loja",
       title: "Ferramentas de Intenção",
       view_all: "Ver coleção completa",
+      page_title: "Coleção completa",
+      page_desc: "Sabonetes artesanais, combos e sessões terapêuticas para integrar o ritual de cuidado no seu dia a dia.",
+      page_cta: "Falar com a Daiane",
       sabonetes: {
         title: "Sabonetes Energéticos",
         desc: "Feitos à mão com óleos essenciais e ervas específicas para limpeza áurica e proteção energética.",
@@ -497,6 +503,9 @@ export const translations = {
       tagline: "Der Shop",
       title: "Werkzeuge der Absicht",
       view_all: "Vollständige Kollektion ansehen",
+      page_title: "Vollständige Kollektion",
+      page_desc: "Handgemachte Seifen, Sets und therapeutische Sitzungen für Ihr tägliches Ritual der Selbstfürsorge.",
+      page_cta: "Daiane kontaktieren",
       sabonetes: {
         title: "Energetische Seifen",
         desc: "Handgemacht mit ätherischen Ölen und spezifischen Kräutern für aurische Reinigung und energetischen Schutz.",
@@ -722,6 +731,9 @@ export const translations = {
       tagline: "The Shop",
       title: "Tools of Intention",
       view_all: "View full collection",
+      page_title: "Full collection",
+      page_desc: "Handcrafted soaps, combos and therapeutic sessions to bring your care ritual into everyday life.",
+      page_cta: "Talk to Daiane",
       sabonetes: {
         title: "Energetic Soaps",
         desc: "Handcrafted with essential oils and specific herbs for auric cleansing and energetic protection.",

@@ -1,0 +1,52 @@
+---
+import banhoterapiaImage from "../assets/images/products/banhoterapia-limpeza.png";
+import oraculoImage from "../assets/images/products/oraculo-cabala.png";
+import sabonetesComboImage from "../assets/images/products/sabonetes-combo.png";
+import sabonetesVerdesImage from "../assets/images/products/sabonetes-verdes.png";
+import { getTranslations } from "../utils/i18n";
+import ProductCard from "./ProductCard.astro";
+
+const t = getTranslations(Astro.currentLocale);
+const sabonetesShowcaseVideo = "/videos/sabonetes-showcase.mp4";
+const sabonetesDetailVideo = "/videos/sabonetes-detail.mp4";
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+  <ProductCard
+    title={t.store.sabonetes.title}
+    description={t.store.sabonetes.desc}
+    price="CHF 20"
+    image={sabonetesVerdesImage}
+    video={sabonetesShowcaseVideo}
+    badge={t.store.sabonetes.badge}
+    badgeBg="bg-tertiary-fixed/40"
+  />
+  <ProductCard
+    title={t.store.combo.title}
+    description={t.store.combo.desc}
+    price="CHF 49,90"
+    image={sabonetesComboImage}
+    video={sabonetesDetailVideo}
+    badge={t.store.combo.badge}
+    badgeBg="bg-secondary-fixed/60"
+    delayClass="delay-100"
+  />
+  <ProductCard
+    title={t.store.oraculo.title}
+    description={t.store.oraculo.desc}
+    price="CHF 150"
+    image={oraculoImage}
+    badge={t.store.oraculo.badge}
+    badgeBg="bg-tertiary-fixed/40"
+    delayClass="delay-200"
+  />
+  <ProductCard
+    title={t.store.banhoterapia.title}
+    description={t.store.banhoterapia.desc}
+    price="CHF 600"
+    image={banhoterapiaImage}
+    badge={t.store.banhoterapia.badge}
+    badgeBg="bg-primary-fixed/40"
+    delayClass="delay-300"
+  />
+</div>

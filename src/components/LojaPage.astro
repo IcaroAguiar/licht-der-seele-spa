@@ -1,0 +1,39 @@
+---
+import BottomNav from "./BottomNav.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import ProductGrid from "./ProductGrid.astro";
+import Layout from "../layouts/Layout.astro";
+import { getLocalePath, getTranslations } from "../utils/i18n";
+
+const t = getTranslations(Astro.currentLocale);
+---
+
+<Layout title={t.store.page_title} description={t.store.page_desc}>
+  <Header />
+
+  <main class="pt-16 md:pt-20 pb-20 md:pb-0">
+    <section class="py-section-gap-lg px-margin-mobile md:px-gutter max-w-container-max mx-auto">
+      <div class="text-center mb-12 md:mb-16 reveal-element max-w-2xl mx-auto">
+        <span class="font-label-md text-label-md text-secondary uppercase tracking-[0.2em] mb-4 block">{t.store.tagline}</span>
+        <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">{t.store.page_title}</h1>
+        <p class="text-on-surface-variant font-body-md text-pretty">{t.store.page_desc}</p>
+      </div>
+
+      <ProductGrid />
+
+      <div class="mt-12 text-center reveal-element delay-200">
+        <a
+          href={getLocalePath("/checkout", Astro.currentLocale)}
+          class="inline-flex items-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-full font-label-md text-label-md hover:bg-primary/90 active:scale-95 transition-all duration-200"
+        >
+          {t.store.page_cta}
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <BottomNav />
+</Layout>
