@@ -1,20 +1,134 @@
 ---
+import { getTranslations, getLocalePath, languages, type Locale } from "../utils/i18n";
+
+const currentLang = (Astro.currentLocale || "pt-br") as Locale;
+const t = getTranslations(currentLang);
+
+const langDisplayCodes: Record<Locale, string> = {
+  "pt-br": "PT-BR",
+  "pt-pt": "PT-PT",
+  "de-ch": "DE-CH",
+  "en": "EN"
+};
+
+const langFlags: Record<Locale, string> = {
+  "pt-br": "🇧🇷",
+  "pt-pt": "🇵🇹",
+  "de-ch": "🇨🇭",
+  "en": "🇬🇧"
+};
+
+const currentDisplayCode = langDisplayCodes[currentLang] || currentLang.toUpperCase();
+const currentFlag = langFlags[currentLang] || "";
 ---
 <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-surface/90 backdrop-blur-md border-b border-primary/5 md:border-b-0 h-16 md:h-20 flex items-center">
-  <nav class="flex justify-center md:justify-between items-center w-full px-margin-mobile md:px-gutter max-w-container-max mx-auto">
+  <nav class="flex justify-between items-center w-full px-margin-mobile md:px-gutter max-w-container-max mx-auto">
     <!-- Branding/Logo -->
-    <a class="font-headline-md text-headline-md font-light text-primary tracking-tight" href="/">
+    <a class="font-headline-md text-headline-md font-light text-primary tracking-tight" href={getLocalePath("/", currentLang)}>
       Licht der Seele
     </a>
     
-    <!-- Desktop Navigation Links -->
-    <div class="hidden md:flex gap-8 items-center">
-      <a class="nav-link-underline text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300" href="#terapias">Terapias</a>
-      <a class="nav-link-underline text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300" href="#produtos">Produtos</a>
-      <a class="nav-link-underline text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300" href="#sobre">Sobre</a>
-      <a href="#agendamento" class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 active:scale-95 transition-all duration-200">
-        Reservar
+    <!-- Navigation Links & Lang Selector -->
+    <div class="flex gap-4 md:gap-8 items-center">
+      <!-- Desktop Navigation Links -->
+      <div class="hidden md:flex gap-8 items-center">
+        <a class="nav-link-underline text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300" href={getLocalePath("#terapias", currentLang)}>{t.nav.therapies}</a>
+        <a class="nav-link-underline text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300" href={getLocalePath("#produtos", currentLang)}>{t.nav.products}</a>
+        <a class="nav-link-underline text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300" href={getLocalePath("#sobre", currentLang)}>{t.nav.about}</a>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="relative lang-selector">
+        <button 
+          type="button" 
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-outline-variant/30 text-on-surface-variant hover:text-primary hover:border-primary/35 transition-all duration-200 text-sm font-label-md bg-white/40 cursor-pointer focus:outline-none focus:ring-1 focus:ring-secondary/30" 
+          id="lang-menu-button" 
+          aria-expanded="false" 
+          aria-haspopup="true"
+        >
+          <span class="text-[16px] leading-none shrink-0" role="img" aria-hidden="true">{currentFlag}</span>
+          <span class="uppercase text-xs tracking-wider font-semibold">{currentDisplayCode}</span>
+          <span class="material-symbols-outlined text-[14px] transition-transform duration-200" id="lang-arrow">keyboard_arrow_down</span>
+        </button>
+        
+        <!-- Dropdown menu -->
+        <div 
+          class="absolute right-0 mt-2 w-44 origin-top-right rounded-2xl bg-surface/95 backdrop-blur-lg border border-primary/5 shadow-[0_4px_20px_rgba(40,17,35,0.08)] focus:outline-none opacity-0 pointer-events-none transition-all duration-250 transform scale-95 z-50" 
+          id="lang-dropdown" 
+          role="menu" 
+          aria-orientation="vertical" 
+          aria-labelledby="lang-menu-button" 
+          tabindex="-1"
+        >
+          <div class="py-1.5 px-1 space-y-0.5" role="none">
+            {Object.entries(languages).map(([code, label]) => {
+              const isActive = code === currentLang;
+              const href = getLocalePath("/", code);
+              const flag = langFlags[code as Locale] || "";
+              return (
+                <a 
+                  href={href} 
+                  class={`flex items-center gap-2 px-4 py-2.5 text-sm rounded-xl text-left transition-colors duration-150 ${
+                    isActive 
+                      ? "bg-primary-fixed/30 text-primary font-medium pointer-events-none" 
+                      : "text-on-surface-variant hover:bg-primary-fixed/20 hover:text-primary"
+                  }`} 
+                  role="menuitem"
+                >
+                  <span class="text-[16px] leading-none shrink-0" role="img" aria-hidden="true">{flag}</span>
+                  <span>{label}</span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop Book Button -->
+      <a href={getLocalePath("/checkout", currentLang)} class="hidden md:inline-block bg-primary text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:bg-primary/90 active:scale-95 transition-all duration-200">
+        {t.nav.book}
       </a>
     </div>
   </nav>
 </header>
+
+<script>
+  // Language Dropdown toggling logic
+  const button = document.getElementById('lang-menu-button');
+  const dropdown = document.getElementById('lang-dropdown');
+  const arrow = document.getElementById('lang-arrow');
+
+  if (button && dropdown && arrow) {
+    const toggle = (show?: boolean) => {
+      const isShowing = show !== undefined ? show : dropdown.classList.contains('opacity-0');
+      if (isShowing) {
+        dropdown.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+        dropdown.classList.add('opacity-100', 'scale-100');
+        arrow.classList.add('rotate-180');
+        button.setAttribute('aria-expanded', 'true');
+      } else {
+        dropdown.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+        dropdown.classList.remove('opacity-100', 'scale-100');
+        arrow.classList.remove('rotate-180');
+        button.setAttribute('aria-expanded', 'false');
+      }
+    };
+
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggle();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!button.contains(e.target as Node) && !dropdown.contains(e.target as Node)) {
+        toggle(false);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        toggle(false);
+      }
+    });
+  }
+</script>
