@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "plugin-prisma-Prisma-Local": {
+      "disabled": true
+    },
+    "plugin-prisma-Prisma-Remote": {
+      "disabled": true
+    },
+    "plugin-ouroboros-ouroboros": {
+      "disabled": true
+    },
+    "stitch": {
+      "disabled": true
+    },
+    "respira-wordpress": {
+      "disabled": true
+    }
+  }
+}
