@@ -1,0 +1,176 @@
+---
+import "../styles/programa-luz-essencia.css";
+import CronogramaStep from "./CronogramaStep.astro";
+import { getTranslations, getLocalePath } from "../utils/i18n";
+
+const t = getTranslations(Astro.currentLocale);
+const p = t.programa;
+---
+
+<section id="programa" class="py-section-gap-lg px-margin-mobile md:px-gutter max-w-container-max mx-auto bg-surface-container-low/40">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 md:mb-16 reveal-element">
+      <span class="font-label-md text-label-md text-secondary uppercase tracking-[0.2em] mb-4 block">{p.tagline}</span>
+      <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-6">{p.title}</h2>
+      <p class="text-on-surface-variant max-w-2xl mx-auto">{p.subtitle}</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+      <!-- Incluído -->
+      <div class="reveal-element">
+        <h3 class="font-headline-sm text-headline-sm text-primary mb-6 flex items-center gap-3">
+          <span class="material-symbols-outlined text-secondary text-2xl" aria-hidden="true">check_circle</span>
+          {p.incluido_titulo}
+        </h3>
+        <div class="space-y-7">
+          {p.incluido_grupos.map((grupo, grupoIndex) => (
+            <>
+              {grupoIndex > 0 && <div class="h-px bg-outline-variant/25"></div>}
+              <div>
+                <p class="font-label-md text-secondary uppercase tracking-wider text-[11px] mb-3 flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[14px]" aria-hidden="true">{grupo.icon}</span>
+                  {grupo.label}
+                </p>
+                <ul class="space-y-3">
+                  {grupo.items.map((item) => (
+                    <li class="flex items-start gap-3 text-on-surface-variant font-body-md text-body-md">
+                      <span class="material-symbols-outlined text-secondary text-[18px] mt-0.5 shrink-0" aria-hidden="true">auto_awesome</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          ))}
+        </div>
+      </div>
+
+      <!-- Investimento -->
+      <div class="reveal-element delay-100">
+        <div class="card-border-gradient wave-hover shadow-hover relative">
+          <div class="card-inner bg-surface-container-lowest relative overflow-hidden p-8 md:p-10">
+
+            <div class="aura-breathe absolute -top-16 -right-10 w-48 h-48 bg-secondary-container/25 rounded-full blur-3xl -z-0"></div>
+            <div class="aura-breathe absolute -bottom-20 -left-12 w-52 h-52 bg-primary/8 rounded-full blur-3xl -z-0" style="animation-delay: -3s;"></div>
+
+            <div class="flex justify-center mb-5 relative z-10">
+              <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-[11px] uppercase tracking-[0.18em] shadow-sm">
+                <span class="material-symbols-outlined text-[14px]" aria-hidden="true">workspace_premium</span>
+                {p.flag_principal}
+              </span>
+            </div>
+
+            <div class="flex items-start justify-between gap-4 mb-6 relative z-10">
+              <div>
+                <h3 class="font-headline-sm text-headline-sm text-primary leading-tight">{p.investimento_titulo}</h3>
+                <p class="font-label-md text-on-surface-variant uppercase tracking-wider text-[10px] mt-1.5 flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[13px] text-secondary" aria-hidden="true">spa</span>
+                  {p.inv_programa_label}
+                </p>
+              </div>
+              <span class="soft-float shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-[11px] uppercase tracking-wider whitespace-nowrap">
+                <span class="material-symbols-outlined text-[14px]" aria-hidden="true">savings</span>
+                {p.inv_economia}
+              </span>
+            </div>
+
+            <div class="price-medallion reveal-element delay-100 relative z-10 rounded-2xl bg-surface-container-low/60 px-6 py-7 mb-6">
+              <div class="reveal-element delay-200 text-center relative z-10 mb-1">
+                <span class="text-outline font-body-md text-body-md line-through tabular-nums">{p.inv_total_valor}</span>
+              </div>
+              <div class="reveal-element delay-200 text-center relative z-10 mb-1">
+                <div class="relative inline-block">
+                  <div class="absolute inset-0 -z-0 blur-2xl opacity-60 rounded-full bg-secondary-container/50 scale-150 pointer-events-none"></div>
+                  <span class="calm-pulse relative font-display-lg text-display-lg text-primary block tabular-nums leading-none">{p.inv_programa}</span>
+                </div>
+              </div>
+              <p class="reveal-element delay-200 text-center text-on-surface-variant text-sm relative z-10">~ {p.inv_sessao_curta}</p>
+
+              <div class="reveal-element delay-300 flex items-stretch justify-center gap-2 mt-5 relative z-10">
+                <div class="flex-1 rounded-xl border border-outline-variant/30 px-3 py-2.5 text-center">
+                  <p class="font-label-md text-on-surface-variant uppercase tracking-wider text-[10px] mb-0.5">{p.inv_cmp_avulsa}</p>
+                  <p class="font-label-md text-on-surface-variant text-xs tabular-nums">{p.inv_cmp_avulsa_valor}</p>
+                </div>
+                <div class="flex items-center text-on-surface-variant/40">
+                  <span class="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_forward</span>
+                </div>
+                <div class="flex-1 rounded-xl border border-gold bg-secondary-container/20 px-3 py-2.5 text-center">
+                  <p class="font-label-md text-primary uppercase tracking-wider text-[10px] mb-0.5">{p.inv_cmp_programa}</p>
+                  <p class="font-label-md text-primary text-xs tabular-nums">{p.inv_sessao_curta}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="reveal-element delay-300 border-b border-gold relative z-10 mb-6"></div>
+
+            <div class="reveal-element delay-300 relative z-10 mb-8">
+              <p class="font-label-md text-on-surface-variant uppercase tracking-wider text-xs mb-3 text-center">{p.pagamento_titulo}</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {p.pagamento.map((item, i) => (
+                  <div class="flex items-center gap-2 rounded-full border border-gold bg-surface-container-low px-4 py-2.5">
+                    <span class="material-symbols-outlined text-secondary text-[16px] shrink-0" aria-hidden="true">{i === 0 ? "payments" : "event_repeat"}</span>
+                    <span class="font-label-md text-primary text-xs tabular-nums">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <a href={getLocalePath("/checkout", Astro.currentLocale)} class="press reveal-element delay-300 cta-gradient relative z-10 inline-flex items-center justify-center gap-2 w-full text-on-primary rounded-full px-8 py-4 font-label-md text-label-md uppercase tracking-wider hover:-translate-y-0.5 transition-all shadow-md text-center">
+              {p.cta}
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+            </a>
+
+            <div class="reveal-element delay-300 flex items-center justify-center gap-4 mt-5 relative z-10 text-on-surface-variant/70">
+              <span class="inline-flex items-center gap-1.5 font-body-md text-[11px]">
+                <span class="material-symbols-outlined text-[14px]" aria-hidden="true">verified</span>
+                {p.trust_sessoes}
+              </span>
+              <span class="w-1 h-1 rounded-full bg-outline-variant/40"></span>
+              <span class="inline-flex items-center gap-1.5 font-body-md text-[11px]">
+                <span class="material-symbols-outlined text-[14px]" aria-hidden="true">favorite</span>
+                {p.trust_acomp}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 md:mt-20 tl-surface" data-timeline>
+      <div class="tl-header text-center mb-10 md:mb-12">
+        <h3 class="font-headline-md text-headline-md text-primary mb-3 text-balance">{p.cronograma_titulo}</h3>
+        <p class="text-on-surface-variant text-sm max-w-xl mx-auto text-pretty">{p.cronograma_obs}</p>
+      </div>
+
+      <div class="hidden md:block relative">
+        <div class="tl-track absolute top-[33px] left-[12.5%] right-[12.5%] h-[2px] rounded-full bg-outline-variant/30" aria-hidden="true"></div>
+        <div class="tl-line tl-line-gradient-h absolute top-[33px] left-[12.5%] right-[12.5%] h-[3px] rounded-full" aria-hidden="true"></div>
+        <div class="grid grid-cols-4 gap-6 relative">
+          {p.sessoes.map((sessao, i) => (
+            <CronogramaStep
+              index={i}
+              titulo={sessao.titulo}
+              desc={sessao.desc}
+              icon={sessao.icon}
+              variant="horizontal"
+            />
+          ))}
+        </div>
+      </div>
+
+      <div class="md:hidden relative">
+        <div class="tl-track absolute left-[33px] top-[34px] bottom-3 w-[2px] bg-outline-variant/30" aria-hidden="true"></div>
+        <div class="tl-line-v tl-line-gradient-v absolute left-[33px] top-[34px] bottom-3 w-[3px] rounded-full" aria-hidden="true"></div>
+        {p.sessoes.map((sessao, i) => (
+          <CronogramaStep
+            index={i}
+            titulo={sessao.titulo}
+            desc={sessao.desc}
+            icon={sessao.icon}
+            variant="vertical"
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
