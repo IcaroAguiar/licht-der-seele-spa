@@ -11,11 +11,12 @@ import ServiceItem from "./ServiceItem.astro";
 import ProgramaLuzEssencia from "./ProgramaLuzEssencia.astro";
 import Layout from "../layouts/Layout.astro";
 
-import { getTranslations, getLocalePath } from "../utils/i18n";
+import { getTranslations, getLocalePath, BRAND_NAME } from "../utils/i18n";
 
 const t = getTranslations(Astro.currentLocale);
 const testimonialDelays = ["delay-100", "delay-200", "delay-300"] as const;
 const lojaPath = getLocalePath("/loja", Astro.currentLocale);
+const sobrePath = getLocalePath("/sobre", Astro.currentLocale);
 ---
 
 <Layout>
@@ -171,7 +172,7 @@ const lojaPath = getLocalePath("/loja", Astro.currentLocale);
       <div class="max-w-container-max mx-auto grid md:grid-cols-2 gap-20 items-center">
         <div class="relative reveal-element">
           <div class="aspect-[3/4] rounded-[60px] overflow-hidden border border-outline-variant/20 shadow-2xl">
-            <Image alt="Daiane — fundadora da Licht der Seele" class="img-outline w-full h-full object-cover object-top" src={founderImage} />
+            <Image alt={`Daiane — fundadora da ${BRAND_NAME}`} class="img-outline w-full h-full object-cover object-top" src={founderImage} />
           </div>
           <div class="absolute -top-6 -right-6 p-8 bg-surface rounded-3xl border border-outline-variant/20 max-w-[200px]">
             <p class="font-label-md text-xs text-primary leading-relaxed">{t.founder.badge}</p>
@@ -186,8 +187,8 @@ const lojaPath = getLocalePath("/loja", Astro.currentLocale);
           <p class="text-on-surface-variant mb-10 leading-relaxed">
             {t.founder.desc2}
           </p>
-          <a class="inline-flex items-center gap-4 font-label-md text-primary group nav-link-underline pb-1" href="#">
-            {t.founder.link} 
+          <a class="inline-flex items-center gap-4 font-label-md text-primary group nav-link-underline pb-1" href={sobrePath}>
+            {t.founder.link}
             <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform" aria-hidden="true">arrow_forward</span>
           </a>
         </div>

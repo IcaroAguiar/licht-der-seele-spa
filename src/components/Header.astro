@@ -1,5 +1,5 @@
 ---
-import { getTranslations, getLocalePath, languages, type Locale } from "../utils/i18n";
+import { getTranslations, getLocalePath, languages, BRAND_NAME, type Locale } from "../utils/i18n";
 
 const currentLang = (Astro.currentLocale || "pt-br") as Locale;
 const t = getTranslations(currentLang);
@@ -25,7 +25,7 @@ const currentFlag = langFlags[currentLang] || "";
   <nav class="flex justify-between items-center w-full px-margin-mobile md:px-gutter max-w-container-max mx-auto">
     <!-- Branding/Logo -->
     <a class="font-headline-md text-headline-md font-light text-primary tracking-tight" href={getLocalePath("/", currentLang)}>
-      Licht der Seele
+      {BRAND_NAME}
     </a>
     
     <!-- Navigation Links & Lang Selector -->
@@ -34,7 +34,7 @@ const currentFlag = langFlags[currentLang] || "";
       <div class="hidden md:flex gap-8 items-center">
         <a class="nav-link-underline text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300" href={getLocalePath("#terapias", currentLang)}>{t.nav.therapies}</a>
         <a class="nav-link-underline text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300" href={getLocalePath("/loja", currentLang)}>{t.nav.products}</a>
-        <a class="nav-link-underline text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300" href={getLocalePath("#sobre", currentLang)}>{t.nav.about}</a>
+        <a class="nav-link-underline text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300" href={getLocalePath("/sobre", currentLang)}>{t.nav.about}</a>
       </div>
 
       <!-- Language Selector -->
