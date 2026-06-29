@@ -9,10 +9,12 @@ export type Locale = keyof typeof languages;
 
 export const defaultLocale: Locale = 'pt-br';
 
+export const BRAND_NAME = "Daiane Holistique";
+
 export const translations = {
   'pt-br': {
     seo: {
-      title: "Licht der Seele | Rituais e Bem-Estar Holístico",
+      title: "Daiane Holistique | Rituais e Bem-Estar Holístico",
       description: "Apoio holístico e ferramentas tangíveis para integrar o autocuidado à sua rotina diária no coração de Zurique e online."
     },
     nav: {
@@ -26,7 +28,7 @@ export const translations = {
       privacy: "Privacidade",
       contact: "Contato",
       faq: "FAQ",
-      copyright: "© 2026 Licht der Seele Spa. Todos os direitos reservados. Luminous Holism."
+      copyright: "© 2026 Daiane Holistique. Todos os direitos reservados."
     },
     hero: {
       tagline: "Holismo Moderno",
@@ -162,10 +164,14 @@ export const translations = {
     founder: {
       tagline: "A Alma por trás",
       title: "Nossa Missão em Zurique",
-      desc1: "Licht der Seele nasceu do desejo de criar uma ponte entre a espiritualidade ancestral e a vida contemporânea acelerada.",
+      page_title: "Nossa Missão em Zurique",
+      page_desc: "Conheça Daiane e a missão da Daiane Holistique no nosso refúgio de bem-estar holístico em Zurique.",
+      desc1: "Daiane Holistique nasceu do desejo de criar uma ponte entre a espiritualidade ancestral e a vida contemporânea acelerada.",
       desc2: "Em nosso refúgio em Zurique, selecionamos cada erva, cada óleo e cada técnica para garantir que sua jornada de cura seja tão luxuosa quanto eficaz. Não buscamos curas rápidas, mas transformações sustentáveis.",
+      page_extra: "Com raízes na espiritualidade brasileira e uma vida construída na Suíça, Daiane une acolhimento, sabedoria ancestral e cuidado contemporâneo em cada sessão.",
       badge: "Fundado em Zurique por Daiane, uma jornada de volta à essência.",
-      link: "Conheça minha história"
+      link: "Conheça minha história",
+      page_cta: "Agendar uma conversa"
     },
     journey: {
       title: "Sua Jornada de Cuidado",
@@ -240,7 +246,7 @@ export const translations = {
   },
   'pt-pt': {
     seo: {
-      title: "Licht der Seele | Rituais e Bem-Estar Holístico",
+      title: "Daiane Holistique | Rituais e Bem-Estar Holístico",
       description: "Apoio holístico e ferramentas tangíveis para integrar o autocuidado na sua rotina diária no coração de Zurique e online."
     },
     nav: {
@@ -254,7 +260,7 @@ export const translations = {
       privacy: "Privacidade",
       contact: "Contacto",
       faq: "FAQ",
-      copyright: "© 2026 Licht der Seele Spa. Todos os direitos reservados. Luminous Holism."
+      copyright: "© 2026 Daiane Holistique. Todos os direitos reservados."
     },
     hero: {
       tagline: "Holismo Moderno",
@@ -390,10 +396,14 @@ export const translations = {
     founder: {
       tagline: "A Alma por trás",
       title: "Nossa Missão em Zurique",
-      desc1: "Licht der Seele nasceu do desejo de criar uma ponte entre a espiritualidade ancestral e a vida contemporânea acelerada.",
+      page_title: "Nossa Missão em Zurique",
+      page_desc: "Conheça Daiane e a missão da Daiane Holistique no nosso refúgio de bem-estar holístico em Zurique.",
+      desc1: "Daiane Holistique nasceu do desejo de criar uma ponte entre a espiritualidade ancestral e a vida contemporânea acelerada.",
       desc2: "No nosso refúgio em Zurique, selecionamos cada erva, cada óleo e cada técnica para garantir que a sua jornada de cura seja tão luxuosa quanto eficaz. Não buscamos curas rápidas, mas transformações sustentáveis.",
+      page_extra: "Com raízes na espiritualidade brasileira e uma vida construída na Suíça, a Daiane une acolhimento, sabedoria ancestral e cuidado contemporâneo em cada sessão.",
       badge: "Fundado em Zurique por Daiane, uma jornada de volta à essência.",
-      link: "Conheça a minha história"
+      link: "Conheça a minha história",
+      page_cta: "Agendar uma conversa"
     },
     journey: {
       title: "Sua Jornada de Cuidado",
@@ -468,7 +478,7 @@ export const translations = {
   },
   'de-ch': {
     seo: {
-      title: "Licht der Seele | Rituale & ganzheitliches Wohlbefinden",
+      title: "Daiane Holistique | Rituale & ganzheitliches Wohlbefinden",
       description: "Ganzheitliche Begleitung und greifbare Werkzeuge zur Integration der Selbstfürsorge in Ihren Alltag im Herzen von Zürich und online."
     },
     nav: {
@@ -482,7 +492,7 @@ export const translations = {
       privacy: "Datenschutz",
       contact: "Kontakt",
       faq: "FAQ",
-      copyright: "© 2026 Licht der Seele Spa. Alle Rechte vorbehalten. Luminous Holism."
+      copyright: "© 2026 Daiane Holistique. Alle Rechte vorbehalten."
     },
     hero: {
       tagline: "Ganzheitliche Pflege",
@@ -618,10 +628,14 @@ export const translations = {
     founder: {
       tagline: "Die Seele dahinter",
       title: "Unsere Mission in Zürich",
-      desc1: "Licht der Seele entstand aus dem Wunsch, eine Brücke zwischen traditioneller Spiritualität und dem beschleunigten modernen Leben zu schlagen.",
+      page_title: "Unsere Mission in Zürich",
+      page_desc: "Lernen Sie Daiane kennen und die Mission von Daiane Holistique in unserem ganzheitlichen Wohlfühlrefugium in Zürich.",
+      desc1: "Daiane Holistique entstand aus dem Wunsch, eine Brücke zwischen traditioneller Spiritualität und dem beschleunigten modernen Leben zu schlagen.",
       desc2: "In unserer Oase in Zürich wählen wir jedes Kraut, jedes Öl und jede Technik sorgfältig aus, um sicherzustellen, dass Ihre Heilungsreise ebenso luxuriös wie wirksam ist. Wir suchen keine schnellen Heilungen, sondern nachhaltige Veränderungen.",
+      page_extra: "Mit Wurzeln in brasilianischer Spiritualität und einem Leben in der Schweiz verbindet Daiane Geborgenheit, ancestrale Weisheit und zeitgemässe Fürsorge in jeder Sitzung.",
       badge: "Gegründet in Zürich von Daiane, eine Reise zurück zur Essenz.",
-      link: "Lernen Sie meine Geschichte kennen"
+      link: "Lernen Sie meine Geschichte kennen",
+      page_cta: "Gespräch vereinbaren"
     },
     journey: {
       title: "Ihre Pflege-Reise",
@@ -696,7 +710,7 @@ export const translations = {
   },
   'en': {
     seo: {
-      title: "Licht der Seele | Rituals & Holistic Well-being",
+      title: "Daiane Holistique | Rituals & Holistic Well-being",
       description: "Holistic support and tangible tools to integrate self-care into your daily routine in the heart of Zurich and online."
     },
     nav: {
@@ -710,7 +724,7 @@ export const translations = {
       privacy: "Privacy Policy",
       contact: "Contact",
       faq: "FAQ",
-      copyright: "© 2026 Licht der Seele Spa. All rights reserved. Luminous Holism."
+      copyright: "© 2026 Daiane Holistique. All rights reserved."
     },
     hero: {
       tagline: "Modern Holism",
@@ -846,10 +860,14 @@ export const translations = {
     founder: {
       tagline: "The Soul behind",
       title: "Our Mission in Zurich",
-      desc1: "Licht der Seele was born from the desire to create a bridge between ancestral spirituality and fast-paced contemporary life.",
+      page_title: "Our Mission in Zurich",
+      page_desc: "Meet Daiane and discover the mission of Daiane Holistique at our holistic wellness sanctuary in Zurich.",
+      desc1: "Daiane Holistique was born from the desire to create a bridge between ancestral spirituality and fast-paced contemporary life.",
       desc2: "In our sanctuary in Zurich, we carefully select each herb, oil, and technique to ensure your healing journey is as luxurious as it is effective. We do not seek quick fixes, but sustainable transformations.",
+      page_extra: "Rooted in Brazilian spirituality and a life built in Switzerland, Daiane blends warmth, ancestral wisdom, and contemporary care in every session.",
       badge: "Founded in Zurich by Daiane, a journey back to essence.",
-      link: "Learn my story"
+      link: "Learn my story",
+      page_cta: "Schedule a conversation"
     },
     journey: {
       title: "Your Care Journey",

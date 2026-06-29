@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { getTranslations, getLocalePath } from "../utils/i18n";
+import { getTranslations, getLocalePath, BRAND_NAME } from "../utils/i18n";
 import Layout from "../layouts/Layout.astro";
 
 // Import local image for the vertical layout panel
@@ -9,7 +9,7 @@ import heroDesktopImage from "../assets/images/hero_desktop.jpg";
 const currentLang = Astro.currentLocale || "pt-br";
 const t = getTranslations(currentLang);
 ---
-<Layout title={`${t.success.title} - Licht der Seele`} description={t.success.description}>
+<Layout title={`${t.success.title} - ${BRAND_NAME}`} description={t.success.description}>
   <style is:inline>
     .border-gold {
       border-color: rgba(208, 195, 201, 0.4); /* Dourado Velado at 40% */
