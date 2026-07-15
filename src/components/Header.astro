@@ -1,5 +1,5 @@
 ---
-import { getTranslations, getLocalePath, languages, BRAND_NAME, type Locale } from "../utils/i18n";
+import { BRAND_NAME, defaultLocale, getLocalePath, getTranslations, type Locale, languages } from "../utils/i18n";
 
 const currentLang = (Astro.currentLocale || "pt-br") as Locale;
 const t = getTranslations(currentLang);
@@ -20,6 +20,8 @@ const langFlags: Record<Locale, string> = {
 
 const currentDisplayCode = langDisplayCodes[currentLang] || currentLang.toUpperCase();
 const currentFlag = langFlags[currentLang] || "";
+const currentLocalePrefix = currentLang === defaultLocale ? "" : `/${currentLang}`;
+const currentRoutePath = Astro.url.pathname.slice(currentLocalePrefix.length) || "/";
 ---
 <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-surface/90 backdrop-blur-md border-b border-primary/5 md:border-b-0 h-16 md:h-20 flex items-center">
   <nav class="flex justify-between items-center w-full px-margin-mobile md:px-gutter max-w-container-max mx-auto">
@@ -63,11 +65,13 @@ const currentFlag = langFlags[currentLang] || "";
           <div class="py-1.5 px-1 space-y-0.5" role="none">
             {Object.entries(languages).map(([code, label]) => {
               const isActive = code === currentLang;
-              const href = getLocalePath("/", code);
+              const href = getLocalePath(currentRoutePath, code);
               const flag = langFlags[code as Locale] || "";
               return (
                 <a 
                   href={href} 
+                  data-language-link
+                  data-base-href={href}
                   class={`flex items-center gap-2 px-4 py-2.5 text-sm rounded-xl text-left transition-colors duration-150 ${
                     isActive 
                       ? "bg-primary-fixed/30 text-primary font-medium pointer-events-none" 
@@ -97,6 +101,19 @@ const currentFlag = langFlags[currentLang] || "";
   const button = document.getElementById('lang-menu-button');
   const dropdown = document.getElementById('lang-dropdown');
   const arrow = document.getElementById('lang-arrow');
+  const languageLinks = document.querySelectorAll<HTMLAnchorElement>('[data-language-link]');
+
+  const syncLanguageDestinations = () => {
+    const currentHash = window.location.hash;
+
+    languageLinks.forEach((link) => {
+      const baseHref = link.dataset.baseHref;
+      if (baseHref) link.href = `${baseHref}${currentHash}`;
+    });
+  };
+
+  syncLanguageDestinations();
+  window.addEventListener('hashchange', syncLanguageDestinations);
 
   if (button && dropdown && arrow) {
     const toggle = (show?: boolean) => {
