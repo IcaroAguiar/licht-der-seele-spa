@@ -95,6 +95,14 @@ export const translations = {
         desc: "Um mapa para entender sua missão de alma e os desafios de crescimento pessoal.",
         price: "CHF 150",
         badge: "Sabedoria"
+      },
+      radionica: {
+        title: "Mesa Radiônica",
+        desc: "Sessão individual conduzida com a mesa radiônica, personalizada de acordo com as necessidades do seu momento.",
+        price: "CHF 250",
+        duration: "1h45 a 2h30",
+        badge: "Energia",
+        image_alt: "Pêndulo sobre uma mesa radiônica durante uma sessão."
       }
     },
     programa: {
@@ -213,7 +221,7 @@ export const translations = {
       form_contact: "WhatsApp ou e-mail",
       form_contact_ph: "Para a Daiane entrar em contato e confirmar",
       form_subject: "O que você está buscando?",
-      form_subjects: ["Programa Luz e Essência (4 sessões)", "Sessão avulsa de Reiki", "Leitura de Oráculo / Cabala", "Banhoterapia + Limpeza", "Produtos", "Tenho dúvidas, quero conversar"],
+      form_subjects: ["Programa Luz e Essência (4 sessões)", "Sessão avulsa de Reiki", "Mesa Radiônica", "Leitura de Oráculo / Cabala", "Banhoterapia + Limpeza", "Produtos", "Tenho dúvidas, quero conversar"],
       form_preference: "Preferência de atendimento",
       form_preferences: ["Presencial (Dübendorf)", "Online", "Em domicílio", "Sem preferência"],
       form_message: "Mensagem (opcional)",
@@ -327,6 +335,14 @@ export const translations = {
         desc: "Um mapa para entender a sua missão de alma e os desafios de crescimento pessoal.",
         price: "CHF 150",
         badge: "Sabedoria"
+      },
+      radionica: {
+        title: "Mesa Radiônica",
+        desc: "Sessão individual conduzida com a mesa radiônica, personalizada de acordo com as necessidades do seu momento.",
+        price: "CHF 250",
+        duration: "1h45 a 2h30",
+        badge: "Energia",
+        image_alt: "Pêndulo sobre uma mesa radiônica durante uma sessão."
       }
     },
     programa: {
@@ -445,7 +461,7 @@ export const translations = {
       form_contact: "WhatsApp ou e-mail",
       form_contact_ph: "Para a Daiane entrar em contacto e confirmar",
       form_subject: "O que está à procura?",
-      form_subjects: ["Programa Luz e Essência (4 sessões)", "Sessão avulsa de Reiki", "Leitura de Oráculo / Cabala", "Banhoterapia + Limpeza", "Produtos", "Tenho dúvidas, quero conversar"],
+      form_subjects: ["Programa Luz e Essência (4 sessões)", "Sessão avulsa de Reiki", "Mesa Radiônica", "Leitura de Oráculo / Cabala", "Banhoterapia + Limpeza", "Produtos", "Tenho dúvidas, quero conversar"],
       form_preference: "Preferência de atendimento",
       form_preferences: ["Presencial (Dübendorf)", "Online", "Em domicílio", "Sem preferência"],
       form_message: "Mensagem (opcional)",
@@ -559,6 +575,14 @@ export const translations = {
         desc: "Ein Wegweiser, um Ihre Seelenmission und die Herausforderungen des persönlichen Wachstums zu verstehen.",
         price: "CHF 150",
         badge: "Weisheit"
+      },
+      radionica: {
+        title: "Radionischer Tisch",
+        desc: "Individuelle Sitzung mit dem radionischen Tisch, abgestimmt auf die Bedürfnisse Ihres aktuellen Lebensmoments.",
+        price: "CHF 250",
+        duration: "1 Std. 45–2 Std. 30",
+        badge: "Energie",
+        image_alt: "Pendel über einem radionischen Tisch während einer Sitzung."
       }
     },
     programa: {
@@ -677,7 +701,7 @@ export const translations = {
       form_contact: "WhatsApp oder E-Mail",
       form_contact_ph: "Damit Daiane Sie kontaktieren und bestätigen kann",
       form_subject: "Wonach suchen Sie?",
-      form_subjects: ["Programm Licht und Essenz (4 Sitzungen)", "Einzelne Reiki-Sitzung", "Orakel-Lesung / Kabbala", "Badetherapie + Reinigung", "Produkte", "Ich habe Fragen, ich möchte sprechen"],
+      form_subjects: ["Programm Licht und Essenz (4 Sitzungen)", "Einzelne Reiki-Sitzung", "Radionischer Tisch", "Orakel-Lesung / Kabbala", "Badetherapie + Reinigung", "Produkte", "Ich habe Fragen, ich möchte sprechen"],
       form_preference: "Bevorzugte Beratung",
       form_preferences: ["Persönlich (Dübendorf)", "Online", "Hausbesuch", "Keine Präferenz"],
       form_message: "Nachricht (optional)",
@@ -791,6 +815,14 @@ export const translations = {
         desc: "A map to understand your soul's mission and personal growth challenges.",
         price: "CHF 150",
         badge: "Wisdom"
+      },
+      radionica: {
+        title: "Radionic Table",
+        desc: "An individual session using the radionic table, tailored to the needs of your present moment.",
+        price: "CHF 250",
+        duration: "1h 45m–2h 30m",
+        badge: "Energy",
+        image_alt: "Pendulum over a radionic table during a session."
       }
     },
     programa: {
@@ -909,7 +941,7 @@ export const translations = {
       form_contact: "WhatsApp or email",
       form_contact_ph: "For Daiane to contact you and confirm",
       form_subject: "What are you looking for?",
-      form_subjects: ["Light and Essence Program (4 sessions)", "Single Reiki session", "Oracle Reading / Kabbalah", "Bath Therapy + Cleansing", "Products", "I have questions, I'd like to talk"],
+      form_subjects: ["Light and Essence Program (4 sessions)", "Single Reiki session", "Radionic Table", "Oracle Reading / Kabbalah", "Bath Therapy + Cleansing", "Products", "I have questions, I'd like to talk"],
       form_preference: "Attendance preference",
       form_preferences: ["In-person (Dübendorf)", "Online", "At home", "No preference"],
       form_message: "Message (optional)",

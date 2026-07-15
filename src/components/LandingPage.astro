@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import founderImage from "../assets/images/founder.png";
 import heroDesktopImage from "../assets/images/hero_desktop.jpg";
 import heroMobileImage from "../assets/images/hero_mobile.jpg";
+import mesaRadionicaImage from "../assets/images/mesa-radionica.jpg";
 import BottomNav from "./BottomNav.astro";
 import Footer from "./Footer.astro";
 import Header from "./Header.astro";
@@ -117,6 +118,30 @@ const sobrePath = getLocalePath("/sobre", Astro.currentLocale);
               delayClass="delay-200"
               desktopOnly={true}
             />
+            <a
+              href={getLocalePath("/checkout", Astro.currentLocale)}
+              class="reveal-element delay-300 mt-8 grid grid-cols-[180px_1fr] overflow-hidden rounded-3xl border border-outline-variant/30 bg-surface-container-low transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl"
+            >
+              <Image
+                src={mesaRadionicaImage}
+                alt={t.services.radionica.image_alt}
+                class="h-full min-h-56 w-full object-cover"
+                widths={[360]}
+                sizes="180px"
+              />
+              <div class="flex flex-col justify-center p-7">
+                <div class="mb-3 flex items-center gap-4">
+                  <span class="font-headline-md text-outline-variant">03</span>
+                  <span class="aura-badge">{t.services.radionica.badge}</span>
+                </div>
+                <h3 class="font-headline-md text-headline-md font-light text-primary">{t.services.radionica.title}</h3>
+                <p class="mt-2 font-body-md text-sm text-on-surface-variant">{t.services.radionica.desc}</p>
+                <div class="mt-5 flex flex-wrap gap-2">
+                  <span class="rounded-full border border-outline-variant/50 bg-surface px-3 py-1 font-label-md text-xs text-on-surface">{t.services.radionica.duration}</span>
+                  <span class="rounded-full border border-outline-variant/50 bg-surface px-3 py-1 font-label-md text-xs text-on-surface">{t.services.radionica.price}</span>
+                </div>
+              </div>
+            </a>
           </div>
 
           <!-- Mobile Layout cards -->
@@ -140,6 +165,29 @@ const sobrePath = getLocalePath("/sobre", Astro.currentLocale);
               delayClass="delay-200"
               mobileOnly={true}
             />
+            <a
+              href={getLocalePath("/checkout", Astro.currentLocale)}
+              class="fade-in-up delay-300 group overflow-hidden rounded-2xl border border-outline-variant/30 bg-surface-container-low transition-all hover:border-primary/20"
+            >
+              <Image
+                src={mesaRadionicaImage}
+                alt={t.services.radionica.image_alt}
+                class="aspect-[16/9] w-full object-cover"
+                widths={[480, 720]}
+                sizes="(max-width: 767px) calc(100vw - 40px), 0px"
+              />
+              <div class="p-5">
+                <div class="mb-3 flex items-center justify-between gap-4">
+                  <h3 class="font-headline-sm text-xl text-primary">{t.services.radionica.title}</h3>
+                  <span class="material-symbols-outlined text-outline-variant transition-colors group-hover:text-primary" aria-hidden="true">arrow_forward</span>
+                </div>
+                <p class="mb-4 font-body-md text-sm text-on-surface-variant">{t.services.radionica.desc}</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="rounded-full border border-outline-variant/50 bg-surface px-3 py-1 font-label-md text-[11px] text-on-surface">{t.services.radionica.duration}</span>
+                  <span class="rounded-full border border-outline-variant/50 bg-surface px-3 py-1 font-label-md text-[11px] text-on-surface">{t.services.radionica.price}</span>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </div>
