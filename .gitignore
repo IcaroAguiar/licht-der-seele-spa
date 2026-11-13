@@ -23,3 +23,8 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 .vercel
+
+# arquivos de sessão e de ferramentas (não fazem parte do produto)
+/BRIEFING.md
+/STITCH_VARIANTS.md
+/.cursor/
