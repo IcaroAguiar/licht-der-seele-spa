@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import founderImage from "../assets/images/founder.png";
+import BottomNav from "./BottomNav.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import Layout from "../layouts/Layout.astro";
+import { getLocalePath, getTranslations, BRAND_NAME } from "../utils/i18n";
+
+const t = getTranslations(Astro.currentLocale);
+const checkoutPath = getLocalePath("/checkout", Astro.currentLocale);
+---
+
+<Layout title={t.founder.page_title} description={t.founder.page_desc}>
+  <Header />
+
+  <main class="pt-16 md:pt-20 pb-20 md:pb-0">
+    <section class="py-section-gap-lg px-margin-mobile md:px-gutter max-w-container-max mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div class="relative reveal-element order-2 md:order-1">
+          <div class="aspect-[3/4] max-w-md mx-auto md:max-w-none rounded-[60px] overflow-hidden border border-outline-variant/20 shadow-2xl">
+            <Image
+              alt={`Daiane — fundadora da ${BRAND_NAME}`}
+              class="img-outline w-full h-full object-cover object-top"
+              src={founderImage}
+            />
+          </div>
+          <div class="absolute top-4 right-4 md:-top-6 md:-right-6 p-6 md:p-8 bg-surface rounded-3xl border border-outline-variant/20 max-w-[200px] shadow-lg">
+            <p class="font-label-md text-xs text-primary leading-relaxed">{t.founder.badge}</p>
+          </div>
+        </div>
+
+        <div class="max-w-lg mx-auto md:mx-0 reveal-element delay-100 order-1 md:order-2">
+          <span class="font-label-md text-label-md text-secondary uppercase tracking-[0.2em] mb-4 block">{t.founder.tagline}</span>
+          <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-6 md:mb-8">{t.founder.page_title}</h1>
+          <p class="text-on-surface-variant mb-6 leading-relaxed">{t.founder.desc1}</p>
+          <p class="text-on-surface-variant mb-6 leading-relaxed">{t.founder.desc2}</p>
+          <p class="text-on-surface-variant mb-10 leading-relaxed">{t.founder.page_extra}</p>
+          <a
+            href={checkoutPath}
+            class="inline-flex items-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-full font-label-md text-label-md hover:bg-primary/90 active:scale-95 transition-all duration-200"
+          >
+            {t.founder.page_cta}
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <BottomNav />
+</Layout>
