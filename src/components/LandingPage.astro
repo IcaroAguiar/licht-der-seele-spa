@@ -1,18 +1,16 @@
 ---
 import { Image } from "astro:assets";
+import daianeHeroImage from "../assets/images/daiane-hero.jpg";
 import founderImage from "../assets/images/founder.png";
-import heroDesktopImage from "../assets/images/hero_desktop.jpg";
-import heroMobileImage from "../assets/images/hero_mobile.jpg";
 import mesaRadionicaImage from "../assets/images/mesa-radionica.jpg";
+import Layout from "../layouts/Layout.astro";
+import { BRAND_NAME, getLocalePath, getTranslations } from "../utils/i18n";
 import BottomNav from "./BottomNav.astro";
 import Footer from "./Footer.astro";
 import Header from "./Header.astro";
 import ProductGrid from "./ProductGrid.astro";
-import ServiceItem from "./ServiceItem.astro";
 import ProgramaLuzEssencia from "./ProgramaLuzEssencia.astro";
-import Layout from "../layouts/Layout.astro";
-
-import { getTranslations, getLocalePath, BRAND_NAME } from "../utils/i18n";
+import ServiceItem from "./ServiceItem.astro";
 
 const t = getTranslations(Astro.currentLocale);
 const testimonialDelays = ["delay-100", "delay-200", "delay-300"] as const;
@@ -48,7 +46,7 @@ const sobrePath = getLocalePath("/sobre", Astro.currentLocale);
         </div>
         <div class="order-1 md:order-2 relative">
           <div class="float-anim aspect-[4/5] rounded-[40px] overflow-hidden bg-surface-container-low border border-outline-variant/30 reveal-element delay-200">
-            <Image alt="Spa Ritual" class="img-outline w-full h-full object-cover grayscale-[0.2] hover:scale-105 transition-transform duration-700" src={heroDesktopImage} loading="eager" fetchpriority="high" />
+            <Image alt="Daiane conduzindo um ritual de cuidado no spa." class="img-outline w-full h-full object-cover grayscale-[0.2] hover:scale-105 transition-transform duration-700" src={daianeHeroImage} loading="eager" fetchpriority="high" />
           </div>
           <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-secondary-container/20 rounded-full blur-3xl -z-10"></div>
         </div>
@@ -59,7 +57,7 @@ const sobrePath = getLocalePath("/sobre", Astro.currentLocale);
     <section class="md:hidden min-h-[85vh] flex flex-col items-center justify-center px-margin-mobile pt-12 pb-8 text-center relative overflow-hidden">
       <div class="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(circle_at_center,var(--color-secondary-container)_0%,transparent_70%)]"></div>
       <div class="relative z-10 w-full max-w-sm mx-auto mb-8 float-animation">
-        <Image alt="A serene spa environment with soft, warm lighting." class="img-outline w-full h-auto rounded-[40px] shadow-2xl object-cover aspect-[4/5]" src={heroMobileImage} loading="eager" fetchpriority="high" />
+        <Image alt="Daiane conduzindo um ritual de cuidado no spa." class="img-outline w-full h-auto rounded-[40px] shadow-2xl object-cover aspect-[4/5]" src={daianeHeroImage} loading="eager" fetchpriority="high" />
       </div>
       <div class="z-10 flex flex-col items-center gap-4">
         <span class="fade-in-up inline-block px-4 py-1 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-md text-label-md tracking-widest uppercase text-xs">{t.hero.location}</span>
