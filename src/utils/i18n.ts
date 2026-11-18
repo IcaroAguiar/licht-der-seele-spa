@@ -99,7 +99,7 @@ export const translations = {
       radionica: {
         title: "Mesa Radiônica",
         desc: "Sessão individual conduzida com a mesa radiônica, personalizada de acordo com as necessidades do seu momento.",
-        price: "CHF 250",
+        price: "CHF 150",
         duration: "1h45 a 2h30",
         badge: "Energia",
         image_alt: "Pêndulo sobre uma mesa radiônica durante uma sessão."
@@ -339,7 +339,7 @@ export const translations = {
       radionica: {
         title: "Mesa Radiônica",
         desc: "Sessão individual conduzida com a mesa radiônica, personalizada de acordo com as necessidades do seu momento.",
-        price: "CHF 250",
+        price: "CHF 150",
         duration: "1h45 a 2h30",
         badge: "Energia",
         image_alt: "Pêndulo sobre uma mesa radiônica durante uma sessão."
@@ -579,7 +579,7 @@ export const translations = {
       radionica: {
         title: "Radionischer Tisch",
         desc: "Individuelle Sitzung mit dem radionischen Tisch, abgestimmt auf die Bedürfnisse Ihres aktuellen Lebensmoments.",
-        price: "CHF 250",
+        price: "CHF 150",
         duration: "1 Std. 45–2 Std. 30",
         badge: "Energie",
         image_alt: "Pendel über einem radionischen Tisch während einer Sitzung."
@@ -819,7 +819,7 @@ export const translations = {
       radionica: {
         title: "Radionic Table",
         desc: "An individual session using the radionic table, tailored to the needs of your present moment.",
-        price: "CHF 250",
+        price: "CHF 150",
         duration: "1h 45m–2h 30m",
         badge: "Energy",
         image_alt: "Pendulum over a radionic table during a session."
